@@ -1,20 +1,19 @@
 package ui;
 
 import main.GamePanel;
+import main.Utility;
 import unit.Laser;
 import unit.Obstacle;
-
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 
-public class PlayScreen implements GameState {
+public class PlaySate implements GameState {
 
-    private final BufferedImage background = loadImage("background");
+    private final BufferedImage background = new Utility().loadImage("background", 640, 640);
+
     @Override
     public void draw(Graphics2D g2, GamePanel gp) {
-        g2.drawImage(background, 0, 0, gp.width, gp.height, null);
+        g2.drawImage(background, 0, 0,null);
 
         gp.player.draw(g2);
         for (Laser laser :
@@ -29,12 +28,12 @@ public class PlayScreen implements GameState {
 
         g2.setFont(g2.getFont().deriveFont(Font.BOLD, 12F));
         g2.setColor(Color.white);
-        g2.drawString("Score: " + gp.currentScore, gp.size /2, gp.size /2);
+        g2.drawString("Score: " + gp.player.getScore(), gp.size / 2, gp.size / 2);
     }
 
     @Override
     public void update(GamePanel gp) {
-        gp.player.update();
+        gp.player.update(gp);
         for (Laser laser :
                 gp.lasers) {
             laser.update();
@@ -43,17 +42,17 @@ public class PlayScreen implements GameState {
         gp.unitLoader.update();
         for (Obstacle ob :
                 gp.obstacles) {
-            ob.update();
+            ob.update(gp);
         }
     }
 
-    private BufferedImage loadImage(String name){
-        BufferedImage img = null;
-        try{
-            img = ImageIO.read(getClass().getResourceAsStream("/" + name + ".png"));
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-        return img;
+    @Override
+    public GameState setNext() {
+        return this;
+    }
+
+    @Override
+    public GameState setLast() {
+        return new PauseSate();
     }
 }

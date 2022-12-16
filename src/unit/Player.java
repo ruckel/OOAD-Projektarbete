@@ -2,7 +2,7 @@ package unit;
 
 import main.GamePanel;
 import main.InputHandler;
-import ui.EndScreen;
+import main.Utility;
 
 import java.awt.*;
 
@@ -10,30 +10,22 @@ public class Player extends Unit{
 
     private final InputHandler inputHandler;
 
-    private boolean invincible;
-    private int invincibleCount;
+    public int score = 0;
 
     //Shooting
     private int laserCount = 0;
     private int laserCoolDown = 0;
     boolean shoot = false;
 
-    public Player(GamePanel gp, InputHandler inputHandler){
-        super(gp);
+    public Player(InputHandler inputHandler, int size, int positionY){
         this.inputHandler = inputHandler;
-        image = loadImage("player");
+        image = new Utility().loadImage("player", size, size);
 
-        positionY = gp.height - (gp.size + gp.size / 10);
-        positionX = gp.width / 2 - gp.size / 2;
+        this.positionY = positionY;
+        positionX = size * 5;
 
-        setUpLasers();
         setUpHitBox();
         setUpStats();
-    }
-    private void setUpLasers(){
-        for (int i = 0; i < gp.lasers.length; i++) {
-            gp.lasers[i] = new Laser(gp);
-        }
     }
     private void setUpStats(){
         //antal pixlar
@@ -49,7 +41,7 @@ public class Player extends Unit{
         defaultHitBoxY = hitBox.y;
     }
 
-    public void update() {
+    public void update(GamePanel gp) {
         if(shoot){
             laserCoolDown++;
             if(laserCoolDown == 20){
@@ -79,16 +71,21 @@ public class Player extends Unit{
         updateHitBox();
 
         if(!alive){
-            System.out.println("YOU CRASHED AND DIED!NYBÖRJARE");
+            System.out.println("YOU CRASHED AND DIED! NYBÖRJARE");
             alive = true;
         }
     }
 
     public void draw(Graphics2D g2){
-
         g2.drawImage(image, positionX, positionY, null);
-
-        //g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
-        g2.drawRect(hitBox.x, hitBox.y, hitBox.width, hitBox.height);
+    }
+    public void incrementScore(){
+        score++;
+    }
+    public void resetScore(){
+        score = 0;
+    }
+    public int getScore(){
+        return score;
     }
 }

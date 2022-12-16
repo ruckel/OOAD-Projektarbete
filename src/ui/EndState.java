@@ -4,7 +4,7 @@ import main.GamePanel;
 
 import java.awt.*;
 
-public class EndScreen implements GameState{
+public class EndState implements GameState{
     @Override
     public void draw(Graphics2D g2, GamePanel gp) {
         g2.setColor(Color.white);
@@ -15,6 +15,15 @@ public class EndScreen implements GameState{
     @Override
     public void update(GamePanel gp) {
 
+    }
+    @Override
+    public GameState setNext() {
+        return new HomeScreen();
+    }
+
+    @Override
+    public GameState setLast() {
+        return new HomeScreen();
     }
 
     private int getCenterForX(Graphics2D g2, String text, GamePanel gp){

@@ -1,8 +1,8 @@
 package main;
 
 import ui.HomeScreen;
-import ui.PauseScreen;
-import ui.PlayScreen;
+import ui.PauseSate;
+import ui.PlaySate;
 import unit.Obstacle;
 
 import java.awt.event.KeyEvent;
@@ -38,18 +38,10 @@ public class InputHandler implements KeyListener {
         }
 
         if(key == KeyEvent.VK_ENTER){
-            gp.state.setCurrentScreen(new PlayScreen());
+            gp.setNextState();
         }
         if(key == KeyEvent.VK_ESCAPE){
-            gp.state.setCurrentScreen(new PauseScreen());
-        }
-        if(key == KeyEvent.VK_H){
-            gp.state.setCurrentScreen(new HomeScreen());
-            gp.currentScore = 0;
-            for (Obstacle ob: gp.obstacles
-                 ) {
-                ob.reset();
-            }
+            gp.setLastState();
         }
     }
 

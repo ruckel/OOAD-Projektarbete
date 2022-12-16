@@ -5,21 +5,24 @@ import main.GamePanel;
 import java.awt.*;
 
 public class State {
-
-    GamePanel gp;
     private GameState currentScreen;
 
-
-    public State(GamePanel gp){
-        this.gp = gp;
-    }
-    public void draw(Graphics2D g2){
+    public void draw(Graphics2D g2, GamePanel gp){
         currentScreen.draw(g2, gp);
     }
-    public void update(){
+    public void update(GamePanel gp){
         currentScreen.update(gp);
     }
-    public void setCurrentScreen(GameState currentScreen){
+    public void setCurrentGameState(GameState currentScreen){
         this.currentScreen = currentScreen;
+    }
+    public GameState getCurrentGameState(){
+        return currentScreen;
+    }
+    public void setNextState(){
+        setCurrentGameState(currentScreen.setNext());
+    }
+    public void setLastState() {
+        setCurrentGameState(currentScreen.setLast());
     }
 }

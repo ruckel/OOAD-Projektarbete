@@ -1,6 +1,7 @@
 package ui;
 
 import main.GamePanel;
+import unit.Obstacle;
 
 import java.awt.*;
 
@@ -39,9 +40,25 @@ public class HomeScreen implements GameState {
         g2.drawString("MENY VAL 3", x, y);
         g2. drawString("->", x - gp.size / 2, y);
 
+        gp.player.resetScore();
+        for (Obstacle ob: gp.obstacles
+        ) {
+            ob.reset();
+        }
     }
     @Override
     public void update(GamePanel gp){}
+
+    @Override
+    public GameState setNext() {
+        return new PlaySate();
+    }
+
+    @Override
+    public GameState setLast() {
+        return this;
+    }
+
     private int getCenterForX(Graphics2D g2, String text, GamePanel gp){
         int length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
         return gp.width/2 - length/2;

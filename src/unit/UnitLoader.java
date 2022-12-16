@@ -8,18 +8,12 @@ public class UnitLoader {
 
     GamePanel gp;
 
-
     private int obstacleCount = 0;
     private int loopCount = 0;
-
     private int obstacleInterval = 50;
-
 
     public UnitLoader(GamePanel gp){
         this.gp = gp;
-        for (int i = 0; i < gp.obstacles.length; i++) {
-            gp.obstacles[i] = new Obstacle(gp);
-        }
     }
 
     public void update(){

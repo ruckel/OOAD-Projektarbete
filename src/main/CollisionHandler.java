@@ -1,8 +1,6 @@
 package main;
 
-import ui.EndScreen;
-import unit.Laser;
-import unit.Obstacle;
+import ui.EndState;
 import unit.Unit;
 
 public class CollisionHandler {
@@ -19,8 +17,8 @@ public class CollisionHandler {
             if(gp.lasers[i].alive){
                 if (gp.lasers[i].hitBox.intersects(unit.hitBox)){
                     gp.lasers[i].alive = false;
-                    gp.lasers[i].positionY = gp.lasers[i].defaultY;
-                    gp.currentScore++;
+                    gp.lasers[i].reset();
+                    gp.player.incrementScore();
                     return true;
                 }
             }
@@ -28,7 +26,7 @@ public class CollisionHandler {
         if (gp.player.hitBox.intersects(unit.hitBox)){
             unit.alive = false;
             gp.player.alive = false;
-            gp.state.setCurrentScreen(new EndScreen());
+            gp.setState(new EndState());
             return true;
         }
         return false;

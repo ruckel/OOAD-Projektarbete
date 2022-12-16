@@ -1,5 +1,6 @@
 package main;
 
+import ui.GameState;
 import ui.HomeScreen;
 import ui.State;
 import unit.Laser;
@@ -23,13 +24,11 @@ public class GamePanel extends JPanel implements Runnable {
 
     //OBJEKT
     private Thread gameThread;
-    State state = new State(this);
-    InputHandler inputHandler = new InputHandler(this);
-    public Player player = new Player(this, inputHandler);
+    private final State state = new State();
+    private final InputHandler inputHandler = new InputHandler(this);
+    public Player player = new Player(inputHandler, size, height - (size + size / 10));
     public UnitLoader unitLoader = new UnitLoader(this);
     public CollisionHandler ch = new CollisionHandler(this);
-
-    public int currentScore = 0;
 
     public GamePanel() {
 
@@ -49,9 +48,15 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     private void setupGame() {
-        state.setCurrentScreen(new HomeScreen());
-    }
+        state.setCurrentGameState(new HomeScreen());
+        for (int i = 0; i < lasers.length; i++) {
+            lasers[i] = new Laser(size, height - (size + size/2));
+        }
+        for (int i = 0; i < obstacles.length; i++) {
+            obstacles[i] = new Obstacle(size, -size);
+        }
 
+    }
     //LOOP SOM UPPDATERAR 60 ggr / sekund
     @Override
     public void run() {
@@ -76,7 +81,7 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update() {
-        state.update();
+        state.update(this);
     }
 
     public void paintComponent(Graphics g) {
@@ -84,21 +89,18 @@ public class GamePanel extends JPanel implements Runnable {
 
         Graphics2D g2 = (Graphics2D) g;
 
-        state.draw(g2);
+        state.draw(g2,this);
     }
-
-    public static void main(String[] args) {
-
-        JFrame window = new JFrame();
-
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setResizable(false);
-        window.setTitle("SPACE WAR");
-
-        GamePanel gp = new GamePanel();
-        window.add(gp);
-        window.pack();
-        window.setLocationRelativeTo(null);
-        window.setVisible(true);
+    public void setState(GameState state){
+        this.state.setCurrentGameState(state);
+    }
+    public GameState setState(){
+        return state.getCurrentGameState();
+    }
+    public void setNextState(){
+        state.setNextState();
+    }
+    public void setLastState(){
+        state.setLastState();
     }
 }

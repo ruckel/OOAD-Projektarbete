@@ -4,7 +4,7 @@ import main.GamePanel;
 
 import java.awt.*;
 
-public class PauseScreen implements GameState{
+public class PauseSate implements GameState{
     @Override
     public void draw(Graphics2D g2, GamePanel gp) {
         g2.setColor(Color.white);
@@ -16,6 +16,17 @@ public class PauseScreen implements GameState{
     public void update(GamePanel gp) {
 
     }
+
+    @Override
+    public GameState setNext() {
+        return new PlaySate();
+    }
+
+    @Override
+    public GameState setLast() {
+        return new HomeScreen();
+    }
+
     private int getCenterForX(Graphics2D g2, String text, GamePanel gp){
         int length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
         return gp.width/2 - length/2;
