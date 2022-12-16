@@ -48,5 +48,6 @@ public class Laser extends Unit {
     }
     public void reset(){
         positionY = defaultY;
+        alive = false;
     }
 }

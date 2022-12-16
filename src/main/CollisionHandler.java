@@ -16,7 +16,6 @@ public class CollisionHandler {
         for (int i = 0; i < gp.lasers.length; i++) {
             if(gp.lasers[i].alive){
                 if (gp.lasers[i].hitBox.intersects(unit.hitBox)){
-                    gp.lasers[i].alive = false;
                     gp.lasers[i].reset();
                     gp.player.incrementScore();
                     return true;
@@ -25,7 +24,6 @@ public class CollisionHandler {
         }
         if (gp.player.hitBox.intersects(unit.hitBox)){
             unit.alive = false;
-            gp.player.alive = false;
             gp.setState(new EndState());
             return true;
         }

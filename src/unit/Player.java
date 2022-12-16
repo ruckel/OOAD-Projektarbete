@@ -70,10 +70,6 @@ public class Player extends Unit{
 
         updateHitBox();
 
-        if(!alive){
-            System.out.println("YOU CRASHED AND DIED! NYBÖRJARE");
-            alive = true;
-        }
     }
 
     public void draw(Graphics2D g2){
