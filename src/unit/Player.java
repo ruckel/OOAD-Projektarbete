@@ -10,11 +10,14 @@ public class Player extends Unit{
 
     private final InputHandler inputHandler;
 
+    private boolean invincible;
+    private int invincibleCount;
+
     //Shooting
     private int laserCount = 0;
-    public Laser[] lasers = new Laser[10];
+    private int laserCoolDown = 0;
     boolean shoot = false;
-    private int shootCoolDown = 0;
+    public Laser[] lasers = new Laser[10];
 
     public Player(GamePanel gp, InputHandler inputHandler){
         super(gp);
