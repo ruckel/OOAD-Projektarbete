@@ -31,15 +31,23 @@ public class CollisionHandler {
         return false;
     }
 
-    public boolean checkCollisionWithObstacle(Unit unit){
-
-        for (Obstacle obs: gp.unitLoader.obstacles) {
-            if(obs.alive){
-                if (unit.hitBox.intersects(obs.hitBox)){
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
+//    public boolean checkCollisionWithObstacle(Unit unit){
+//
+//        for (Obstacle obs: gp.unitLoader.obstacles) {
+//            if(obs.alive){
+//                if (unit.hitBox.intersects(obs.hitBox)){
+//                    return true;
+//                }
+//            }
+//        }
+//        return false;
+//
+//        for (int i = 0; i < gp.unitLoader.obstacles.length; i++) {
+//            if(gp.unitLoader.obstacles[i].alive){
+//                if (unit.hitBox.intersects(obs.hitBox)){
+//                    return true;
+//                }
+//            }
+//        }
+//    }
 }
