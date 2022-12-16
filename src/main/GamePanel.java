@@ -16,6 +16,9 @@ public class GamePanel extends JPanel implements Runnable {
     public int width = size * 10;
     public int height = size * 10;
     final private double FPS = 60.0;
+    //UNITS
+    public Laser[] lasers = new Laser[10];
+    public Obstacle[] obstacles = new Obstacle[20];
 
     //OBJEKT
     private State state;
@@ -26,9 +29,6 @@ public class GamePanel extends JPanel implements Runnable {
     public UnitLoader unitLoader = new UnitLoader(this);
     public CollisionHandler ch = new CollisionHandler(this);
 
-    //UNITS
-    public Laser[] lasers = new Laser[10];
-    public Obstacle[] obstacles = new Obstacle[20];
 
 
     public GamePanel() {
