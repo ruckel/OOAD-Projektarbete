@@ -14,6 +14,7 @@ public class Obstacle extends Unit{
         defaultY = - gp.size;
 
         positionY = defaultY;
+        setUpHitBox();
 
     }
     private void setUpHitBox(){

@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-abstract class Unit {
+public class Unit {
 
     protected GamePanel gp;
     protected BufferedImage image;

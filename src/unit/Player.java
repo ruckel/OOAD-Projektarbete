@@ -4,7 +4,6 @@ import main.GamePanel;
 import main.InputHandler;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
 public class Player extends Unit{
 
@@ -28,7 +27,7 @@ public class Player extends Unit{
         positionX = gp.width / 2 - gp.size / 2;
 
         setUpLasers();
-        //setUpHitBox();
+        setUpHitBox();
         setUpStats();
     }
     private void setUpLasers(){
