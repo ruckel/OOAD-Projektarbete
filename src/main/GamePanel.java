@@ -11,8 +11,8 @@ public class GamePanel extends JPanel implements Runnable {
 
     //Värden att mäta med(mätinstrument)
     public int size = 96;
-    public int width = size * 8;
-    public int height = size * 6;
+    public int width = size * 7;
+    public int height = size * 7;
     final private double FPS = 60.0;
 
     private final int basicInterval = 32;

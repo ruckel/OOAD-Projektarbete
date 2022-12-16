@@ -24,7 +24,7 @@ public class Player extends Unit{
         this.inputHandler = inputHandler;
         image = loadImage("player");
 
-        positionY = gp.height - (gp.size + gp.size / 4);
+        positionY = gp.height - (gp.size + gp.size / 10);
         positionX = gp.width / 2 - gp.size / 2;
 
         setUpLasers();
@@ -64,12 +64,12 @@ public class Player extends Unit{
         }
         //om spelaren trycker vänster så minskar positionen med antal pixlar speed //samma med höger fast ökar speed
         if (inputHandler.left){
-            if(positionX > gp.size / 6){
+            if(positionX > gp.size / 8){
                 positionX -= speed;
             }
         } else if (inputHandler.right){
             //om x blir större än bredden så förflyttas man inte för att inte hamna utanför rutan
-            if(positionX < gp.width - (gp.size + gp.size / 6)){
+            if(positionX < gp.width - (gp.size + gp.size / 8)){
                 positionX += speed;
             }
         }

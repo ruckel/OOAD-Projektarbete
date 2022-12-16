@@ -12,7 +12,7 @@ public class Laser extends Unit {
         super(gp);
         image = loadImage("laser");
 
-        defaultY = gp.height - (gp.size + 65);
+        defaultY = gp.height - (gp.size + gp.size/2);
         positionY = defaultY;
 
         //setUpHitBox();
