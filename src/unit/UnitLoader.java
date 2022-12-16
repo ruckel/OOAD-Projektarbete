@@ -27,7 +27,7 @@ public class UnitLoader {
         loopCount++;
         if (loopCount == obstacleInterval){
             loopCount = 0;
-            obstacles[obstacleCount].setObstacle(randomSpawnX(), 1);
+            obstacles[obstacleCount].setObstacle(randomSpawnX(), randomSpeed());
             obstacleCount++;
             if (obstacleCount == 20){
                 obstacleCount = 0;
@@ -43,13 +43,13 @@ public class UnitLoader {
         Random rng = new Random();
         int randomNr = rng.nextInt(1, 101);
         if (randomNr < 20){
-            speed = 4;
+            speed = 1;
         } else if (randomNr < 50){
-            speed = 5;
+            speed = 2;
         } else if (randomNr < 80){
-            speed = 6;
+            speed = 3;
         } else {
-            speed = 7;
+            speed = 4;
         }
         return speed;
     }
