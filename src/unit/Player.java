@@ -81,6 +81,7 @@ public class Player extends Unit{
 
         if(!alive){
             System.out.println("YOU CRASHED AND DIED!NYBÖRJARE");
+            alive = true;
         }
     }
 
