@@ -14,16 +14,22 @@ public class Unit {
     protected BufferedImage image;
 
     public Rectangle hitBox = new Rectangle(0, 0, 0, 0);
-    protected int positionX, positionY;
+    public int positionX, positionY;
+    protected int defaultHitBoxX, defaultHitBoxY;
     protected int spriteCount = 0;
     protected int speed;
-    protected boolean alive = false;
+    public boolean alive = false;
 
     protected Unit(GamePanel gp){
         this.gp = gp;
     }
     void update(){}
     void draw(Graphics2D g2){}
+
+    protected void updateHitBox(){
+        hitBox.x = positionX + defaultHitBoxX;
+        hitBox.y = positionY + defaultHitBoxY;
+    }
 
     protected BufferedImage loadImage(String name){
         BufferedImage img = null;

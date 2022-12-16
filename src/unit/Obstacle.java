@@ -18,10 +18,12 @@ public class Obstacle extends Unit{
 
     }
     private void setUpHitBox(){
-        hitBox.x = 13;
-        hitBox.y = 20;
-        hitBox.width = 66;
-        hitBox.height = 54;
+        hitBox.x = 10;
+        hitBox.y = 10;
+        hitBox.width = 40;
+        hitBox.height = 40;
+        defaultHitBoxX = hitBox.x;
+        defaultHitBoxY = hitBox.y;
     }
     public void setObstacle(int screenX, int speed){
         positionX = screenX;
@@ -37,12 +39,18 @@ public class Obstacle extends Unit{
             } else {
                 positionY += speed;
             }
+            updateHitBox();
+
+            if(gp.ch.checkObstacle(this)){
+                alive = false;
+                positionY = defaultY;
+            }
         }
     }
     public void draw(Graphics2D g2){
         if(alive){
             g2.drawImage(image, positionX, positionY, null);
-            //g2.drawRect(screenX + hitBox.x, screenY + hitBox.y, hitBox.width, hitBox.height);
+            g2.drawRect(hitBox.x, hitBox.y, hitBox.width, hitBox.height);
         }
     }
 }

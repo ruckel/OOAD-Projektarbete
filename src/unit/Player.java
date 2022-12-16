@@ -40,11 +40,14 @@ public class Player extends Unit{
         speed = 5;
     }
     private void setUpHitBox(){
-        hitBox.x = 10;
-        hitBox.y = 30;
-        hitBox.width = 72;
-        hitBox.height = 50;
+        hitBox.x = 5;
+        hitBox.y = 20;
+        hitBox.width = 50;
+        hitBox.height = 30;
+        defaultHitBoxX = hitBox.x;
+        defaultHitBoxY = hitBox.y;
     }
+
 
     public void update() {
         if(shoot){
@@ -72,6 +75,12 @@ public class Player extends Unit{
                 positionX += speed;
             }
         }
+
+        updateHitBox();
+
+        if(gp.ch.checkCollisionWithObstacle(this)){
+            System.out.println("YOU CRASHED AND DIED");
+        }
     }
 
     public void draw(Graphics2D g2){
@@ -79,6 +88,6 @@ public class Player extends Unit{
         g2.drawImage(image, positionX, positionY, null);
 
         //g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
-        //g2.drawRect(screenX + hitBox.x, screenY + hitBox.y, hitBox.width, hitBox.height);
+        g2.drawRect(hitBox.x, hitBox.y, hitBox.width, hitBox.height);
     }
 }

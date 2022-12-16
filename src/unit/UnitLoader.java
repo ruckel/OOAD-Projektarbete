@@ -18,7 +18,7 @@ public class UnitLoader {
 
     public UnitLoader(GamePanel gp){
         this.gp = gp;
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < obstacles.length; i++) {
             obstacles[i] = new Obstacle(gp);
         }
     }
@@ -27,7 +27,7 @@ public class UnitLoader {
         loopCount++;
         if (loopCount == obstacleInterval){
             loopCount = 0;
-            obstacles[obstacleCount].setObstacle(randomSpawnX(), randomSpeed());
+            obstacles[obstacleCount].setObstacle(randomSpawnX(), 1);
             obstacleCount++;
             if (obstacleCount == 20){
                 obstacleCount = 0;

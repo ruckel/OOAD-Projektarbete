@@ -6,6 +6,12 @@ import unit.Unit;
 
 public class CollisionHandler {
 
+    GamePanel gp;
+
+    public CollisionHandler(GamePanel gp){
+        this.gp = gp;
+    }
+
     public boolean checkObstacle (Unit unit){
 
         for (Laser laser: gp.player.lasers) {

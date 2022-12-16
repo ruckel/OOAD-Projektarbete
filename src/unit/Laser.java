@@ -23,10 +23,12 @@ public class Laser extends Unit {
         alive = true;
     }
     private void setUpHitBox(){
-        hitBox.x = 42;
-        hitBox.y = 22;
-        hitBox.width = 14;
-        hitBox.height = 45;
+        hitBox.x = 29;
+        hitBox.y = 15;
+        hitBox.width = 7;
+        hitBox.height = 30;
+        defaultHitBoxX = hitBox.x;
+        defaultHitBoxY = hitBox.y;
     }
     public void update(){
         if(alive){
@@ -36,6 +38,12 @@ public class Laser extends Unit {
             } else {
                 positionY -= speed;
             }
+            updateHitBox();
+
+            if(gp.ch.checkCollisionWithObstacle(this)){
+                alive = false;
+                positionY = defaultY;
+            }
         }
     }
 
@@ -44,6 +52,5 @@ public class Laser extends Unit {
             g2.drawImage(image, positionX, positionY, null);
             g2.drawRect(hitBox.x, hitBox.y, hitBox.width, hitBox.height);
         }
-        //g2.drawImage(image, positionX, positionY, null);
     }
 }

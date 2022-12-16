@@ -25,6 +25,7 @@ public class GamePanel extends JPanel implements Runnable {
     public Player player = new Player(this, inputHandler);
 
     public UnitLoader unitLoader = new UnitLoader(this);
+    public CollisionHandler ch = new CollisionHandler(this);
 
 
     public GamePanel() {
