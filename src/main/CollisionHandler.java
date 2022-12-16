@@ -14,14 +14,21 @@ public class CollisionHandler {
 
     public boolean checkObstacle (Unit unit){
 
-        for (Laser laser: gp.player.lasers) {
-            if (laser.alive){
-                if (laser.hitBox.intersects(unit.hitBox)){
+        for (int i = 0; i < gp.player.lasers.length; i++) {
+            if(gp.player.lasers[i].alive){
+                if (gp.player.lasers[i].hitBox.intersects(unit.hitBox)){
+                    gp.player.lasers[i].alive = false;
+                    gp.player.lasers[i].positionY = gp.player.lasers[i].defaultY;
                     return true;
                 }
             }
         }
-        return gp.player.hitBox.intersects(unit.hitBox);
+        if (gp.player.hitBox.intersects(unit.hitBox)){
+            unit.alive = false;
+            gp.player.alive = false;
+            return true;
+        }
+        return false;
     }
 
     public boolean checkCollisionWithObstacle(Unit unit){
