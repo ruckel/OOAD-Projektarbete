@@ -16,7 +16,6 @@ public class Unit {
     public Rectangle hitBox = new Rectangle(0, 0, 0, 0);
     public int positionX, positionY;
     protected int defaultHitBoxX, defaultHitBoxY;
-    protected int spriteCount = 0;
     protected int speed;
     public boolean alive = false;
 
