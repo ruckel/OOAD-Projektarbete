@@ -2,6 +2,7 @@ package main;
 
 import ui.UI;
 import unit.Laser;
+import unit.Obstacle;
 import unit.Player;
 
 import javax.swing.*;
@@ -10,9 +11,9 @@ import java.awt.*;
 public class GamePanel extends JPanel implements Runnable {
 
     //Värden att mäta med(mätinstrument)
-    public int size = 96;
-    public int width = size * 7;
-    public int height = size * 7;
+    public int size = 64;
+    public int width = size * 12;
+    public int height = size * 12;
     final private double FPS = 60.0;
 
     private final int basicInterval = 32;
@@ -25,6 +26,8 @@ public class GamePanel extends JPanel implements Runnable {
     private final UI ui = new UI(this);
     InputHandler inputHandler = new InputHandler();
     public Player player = new Player(this, inputHandler);
+
+    public Obstacle ob = new Obstacle(this);
 
 
     public GamePanel() {

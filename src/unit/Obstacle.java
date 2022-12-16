@@ -6,41 +6,46 @@ import java.awt.*;
 
 public class Obstacle extends Unit{
 
-//    private final int defaultY;
-//
+    private final int defaultY;
+
     public Obstacle(GamePanel gp){
         super(gp);
-        //image = loadSprite("obstacle");
-//        super.screenY = spawnY;
-//        defaultY = spawnY;
-//        this.endOfScreen = endOfScreen;
+        image = loadImage("obstacle");
+        defaultY = - gp.size;
 
+        alive = true;
+        positionY = gp.height / 2;
+        positionX = gp.width / 2;
+
+        //setUpHitBox();
+
+    }
+    private void setUpHitBox(){
         hitBox.x = 13;
         hitBox.y = 20;
         hitBox.width = 66;
         hitBox.height = 54;
+    }
+    public void setObstacle(int screenX, int speed){
+        positionX= screenX;
+        this.speed = speed;
+        alive = true;
+    }
 
-//    }
-//    public void setObstacle(int screenX, int speed){
-//        super.screenX = screenX;
-//        super.speed = speed;
-//        alive = true;
-//    }
-//
-//    public void update(){
+    public void update(){
 //        if (alive){
-//            if(screenY >= endOfScreen){
+//            if(positionY >= gp.height){
 //                alive = false;
-//                screenY = defaultY;
+//                positionY = defaultY;
 //            } else {
-//                screenY += speed;
+//                positionY += speed;
 //            }
 //        }
-//    }
-//    public void draw(Graphics2D g2){
-//        if(alive){
-//            g2.drawImage(image, screenX, screenY, null);
-//            g2.drawRect(screenX + hitBox.x, screenY + hitBox.y, hitBox.width, hitBox.height);
-//        }
+    }
+    public void draw(Graphics2D g2){
+        if(alive){
+            g2.drawImage(image, positionX, positionY, null);
+            //g2.drawRect(screenX + hitBox.x, screenY + hitBox.y, hitBox.width, hitBox.height);
         }
+    }
 }

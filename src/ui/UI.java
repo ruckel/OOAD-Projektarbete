@@ -24,6 +24,7 @@ public class UI {
         for (Laser laser:gp.player.lasers) {
             laser.update();
         }
+        gp.ob.update();
     }
     public void draw(Graphics2D g2){
 
@@ -32,6 +33,7 @@ public class UI {
         for (Laser laser:gp.player.lasers) {
             laser.draw(g2);
         }
+        gp.ob.draw(g2);
     }
     private BufferedImage loadImage(String name){
         BufferedImage img = null;
