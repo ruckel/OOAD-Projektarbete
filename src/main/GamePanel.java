@@ -17,10 +17,6 @@ public class GamePanel extends JPanel implements Runnable {
     public int height = size * 10;
     final private double FPS = 60.0;
 
-    private final int basicInterval = 32;
-    private final int scale = 3;
-    public int interval = basicInterval * scale;
-
     //OBJEKT
     private State state;
     private Thread gameThread;
