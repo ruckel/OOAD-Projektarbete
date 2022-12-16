@@ -38,6 +38,7 @@ public class Player extends Unit{
     private void setUpStats(){
         //antal pixlar
         speed = 5;
+        alive = true;
     }
     private void setUpHitBox(){
         hitBox.x = 5;
@@ -78,8 +79,8 @@ public class Player extends Unit{
 
         updateHitBox();
 
-        if(gp.ch.checkCollisionWithObstacle(this)){
-            System.out.println("YOU CRASHED AND DIED");
+        if(!alive){
+            System.out.println("YOU CRASHED AND DIED!NYBÖRJARE");
         }
     }
 

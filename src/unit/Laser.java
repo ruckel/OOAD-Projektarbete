@@ -6,7 +6,7 @@ import java.awt.*;
 
 public class Laser extends Unit {
 
-    private final int defaultY;
+    public final int defaultY;
 
     public Laser(GamePanel gp){
         super(gp);
@@ -39,11 +39,6 @@ public class Laser extends Unit {
                 positionY -= speed;
             }
             updateHitBox();
-
-            if(gp.ch.checkCollisionWithObstacle(this)){
-                alive = false;
-                positionY = defaultY;
-            }
         }
     }
 
