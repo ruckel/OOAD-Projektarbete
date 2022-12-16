@@ -1,6 +1,7 @@
 package main;
 
 import ui.UI;
+import unit.Laser;
 import unit.Player;
 
 import javax.swing.*;
@@ -10,8 +11,8 @@ public class GamePanel extends JPanel implements Runnable {
 
     //Värden att mäta med(mätinstrument)
     public int size = 96;
-    public int width = size * 10;
-    public int height = size * 10;
+    public int width = size * 8;
+    public int height = size * 6;
     final private double FPS = 60.0;
 
     private final int basicInterval = 32;

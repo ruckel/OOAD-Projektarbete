@@ -1,42 +1,49 @@
 package unit;
 
+import main.GamePanel;
+
 import java.awt.*;
 
 public class Laser extends Unit {
 
     private final int defaultY;
 
-    public Laser(int spawnY){
-        //image = loadSprite("laser");
+    public Laser(GamePanel gp){
+        super(gp);
+        image = loadImage("laser");
 
-        screenY = spawnY;
-        defaultY = spawnY;
+        defaultY = gp.height - (gp.size + 65);
+        positionY = defaultY;
 
+        //setUpHitBox();
+    }
+    public void setUpLaser(int positionX, int speed){
+        super.positionX = positionX;
+        super.speed = speed;
+        alive = true;
+    }
+    private void setUpHitBox(){
         hitBox.x = 42;
         hitBox.y = 22;
         hitBox.width = 14;
         hitBox.height = 45;
     }
-    public void setUpLaser(int screenX, int speed){
-        super.screenX = screenX;
-        super.speed = speed;
-        alive = true;
-    }
     public void update(){
-        if (alive){
-            if(screenY <= 0){
+        if(alive){
+            if(positionY <= 0){
                 alive = false;
-                screenY = defaultY;
+                positionY = defaultY;
             } else {
-                screenY -= speed;
+                positionY -= speed;
             }
         }
     }
 
     public void draw(Graphics2D g2){
         if(alive){
-            g2.drawImage(image, screenX, screenY, null);
-            g2.drawRect(screenX + hitBox.x, screenY + hitBox.y, hitBox.width, hitBox.height);
+            g2.drawImage(image, positionX, positionY, null);
+            //g2.drawRect(screenX + hitBox.x, screenY + hitBox.y, hitBox.width, hitBox.height);
         }
+        //g2.drawImage(image, positionX, positionY, null);
     }
 }

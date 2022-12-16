@@ -1,6 +1,7 @@
 package unit;
 
 import main.GamePanel;
+import main.Utility;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -13,8 +14,7 @@ abstract class Unit {
     protected BufferedImage image;
 
     public Rectangle hitBox = new Rectangle(0, 0, 0, 0);
-    protected int screenX, screenY;
-    protected boolean invincible = false;
+    protected int positionX, positionY;
     protected int spriteCount = 0;
     protected int speed;
     protected boolean alive = false;
@@ -25,10 +25,11 @@ abstract class Unit {
     void update(){}
     void draw(Graphics2D g2){}
 
-    private BufferedImage loadImage(String name){
+    protected BufferedImage loadImage(String name){
         BufferedImage img = null;
+        Utility utility = new Utility();
         try{
-            img = ImageIO.read(getClass().getResourceAsStream("/" + name + ".png"));
+            img = utility.scaleImage(ImageIO.read(getClass().getResourceAsStream("/" + name + ".png")), gp.size, gp.size);
         }catch (IOException e){
             e.printStackTrace();
         }
