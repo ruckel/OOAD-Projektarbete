@@ -13,11 +13,7 @@ public class Obstacle extends Unit{
         image = loadImage("obstacle");
         defaultY = - gp.size;
 
-        alive = true;
-        positionY = gp.height / 2;
-        positionX = gp.width / 2;
-
-        //setUpHitBox();
+        positionY = defaultY;
 
     }
     private void setUpHitBox(){
@@ -27,20 +23,20 @@ public class Obstacle extends Unit{
         hitBox.height = 54;
     }
     public void setObstacle(int screenX, int speed){
-        positionX= screenX;
+        positionX = screenX;
         this.speed = speed;
         alive = true;
     }
 
     public void update(){
-//        if (alive){
-//            if(positionY >= gp.height){
-//                alive = false;
-//                positionY = defaultY;
-//            } else {
-//                positionY += speed;
-//            }
-//        }
+        if (alive){
+            if(positionY >= gp.height){
+                alive = false;
+                positionY = defaultY;
+            } else {
+                positionY += speed;
+            }
+        }
     }
     public void draw(Graphics2D g2){
         if(alive){
