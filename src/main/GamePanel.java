@@ -1,6 +1,7 @@
 package main;
 
-import ui.UI;
+import ui.HomeScreen;
+import ui.State;
 import unit.Laser;
 import unit.Obstacle;
 import unit.Player;
@@ -21,15 +22,14 @@ public class GamePanel extends JPanel implements Runnable {
     public Obstacle[] obstacles = new Obstacle[20];
 
     //OBJEKT
-    private State state;
     private Thread gameThread;
-    private final UI ui = new UI(this);
-    InputHandler inputHandler = new InputHandler();
+    State state = new State(this);
+    InputHandler inputHandler = new InputHandler(this);
     public Player player = new Player(this, inputHandler);
     public UnitLoader unitLoader = new UnitLoader(this);
     public CollisionHandler ch = new CollisionHandler(this);
 
-
+    public int currentScore = 0;
 
     public GamePanel() {
 
@@ -49,7 +49,7 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     private void setupGame() {
-        this.state = State.HOME_SCREEN;
+        state.setCurrentScreen(new HomeScreen());
     }
 
     //LOOP SOM UPPDATERAR 60 ggr / sekund
@@ -76,7 +76,7 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update() {
-        ui.update();
+        state.update();
     }
 
     public void paintComponent(Graphics g) {
@@ -84,8 +84,7 @@ public class GamePanel extends JPanel implements Runnable {
 
         Graphics2D g2 = (Graphics2D) g;
 
-        ui.draw(g2);
-
+        state.draw(g2);
     }
 
     public static void main(String[] args) {

@@ -4,7 +4,7 @@ import main.GamePanel;
 
 import java.awt.*;
 
-public class HomeScreen implements Draw {
+public class HomeScreen implements GameState {
 
     @Override
     public void draw(Graphics2D g2, GamePanel gp) {
@@ -25,7 +25,6 @@ public class HomeScreen implements Draw {
         g2.setColor(Color.white);
         g2.drawString(title, gp.size / 2, gp.size * 2);
 
-
         x = getCenterForX(g2, "MENY VAL 1", gp);
         y = gp.size * 4;
 
@@ -40,10 +39,9 @@ public class HomeScreen implements Draw {
         g2.drawString("MENY VAL 3", x, y);
         g2. drawString("->", x - gp.size / 2, y);
 
-
-
-
     }
+    @Override
+    public void update(GamePanel gp){}
     private int getCenterForX(Graphics2D g2, String text, GamePanel gp){
         int length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
         return gp.width/2 - length/2;

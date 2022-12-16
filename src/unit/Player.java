@@ -2,6 +2,7 @@ package unit;
 
 import main.GamePanel;
 import main.InputHandler;
+import ui.EndScreen;
 
 import java.awt.*;
 
