@@ -14,11 +14,11 @@ public class CollisionHandler {
 
     public boolean checkObstacle (Unit unit){
 
-        for (int i = 0; i < gp.player.lasers.length; i++) {
-            if(gp.player.lasers[i].alive){
-                if (gp.player.lasers[i].hitBox.intersects(unit.hitBox)){
-                    gp.player.lasers[i].alive = false;
-                    gp.player.lasers[i].positionY = gp.player.lasers[i].defaultY;
+        for (int i = 0; i < gp.lasers.length; i++) {
+            if(gp.lasers[i].alive){
+                if (gp.lasers[i].hitBox.intersects(unit.hitBox)){
+                    gp.lasers[i].alive = false;
+                    gp.lasers[i].positionY = gp.lasers[i].defaultY;
                     return true;
                 }
             }
@@ -30,24 +30,4 @@ public class CollisionHandler {
         }
         return false;
     }
-
-//    public boolean checkCollisionWithObstacle(Unit unit){
-//
-//        for (Obstacle obs: gp.unitLoader.obstacles) {
-//            if(obs.alive){
-//                if (unit.hitBox.intersects(obs.hitBox)){
-//                    return true;
-//                }
-//            }
-//        }
-//        return false;
-//
-//        for (int i = 0; i < gp.unitLoader.obstacles.length; i++) {
-//            if(gp.unitLoader.obstacles[i].alive){
-//                if (unit.hitBox.intersects(obs.hitBox)){
-//                    return true;
-//                }
-//            }
-//        }
-//    }
 }

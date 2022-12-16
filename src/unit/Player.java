@@ -16,7 +16,6 @@ public class Player extends Unit{
     private int laserCount = 0;
     private int laserCoolDown = 0;
     boolean shoot = false;
-    public Laser[] lasers = new Laser[10];
 
     public Player(GamePanel gp, InputHandler inputHandler){
         super(gp);
@@ -31,8 +30,8 @@ public class Player extends Unit{
         setUpStats();
     }
     private void setUpLasers(){
-        for (int i = 0; i < 10; i++) {
-            lasers[i] = new Laser(gp);
+        for (int i = 0; i < gp.lasers.length; i++) {
+            gp.lasers[i] = new Laser(gp);
         }
     }
     private void setUpStats(){
@@ -49,7 +48,6 @@ public class Player extends Unit{
         defaultHitBoxY = hitBox.y;
     }
 
-
     public void update() {
         if(shoot){
             laserCoolDown++;
@@ -59,7 +57,7 @@ public class Player extends Unit{
             }
         } else if(inputHandler.shoot){
             shoot = true;
-            lasers[laserCount].setUpLaser(positionX - 1, 7);
+            gp.lasers[laserCount].setUpLaser(positionX - 1, 7);
             laserCount++;
             if (laserCount == 10){
                 laserCount = 0;

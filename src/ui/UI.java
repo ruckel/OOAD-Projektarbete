@@ -12,6 +12,7 @@ import java.io.IOException;
 public class UI {
 
     GamePanel gp;
+
     private final BufferedImage background;
 
 
@@ -22,12 +23,13 @@ public class UI {
     }
     public void update(){
         gp.player.update();
-        for (Laser laser:gp.player.lasers) {
+        for (Laser laser :
+                gp.lasers) {
             laser.update();
         }
         gp.unitLoader.update();
         for (Obstacle ob :
-                gp.unitLoader.obstacles) {
+                gp.obstacles) {
             ob.update();
         }
     }
@@ -35,11 +37,11 @@ public class UI {
 
         g2.drawImage(background,0, 0, null);
         gp.player.draw(g2);
-        for (Laser laser:gp.player.lasers) {
+        for (Laser laser:gp.lasers) {
             laser.draw(g2);
         }
         for (Obstacle ob :
-                gp.unitLoader.obstacles) {
+                gp.obstacles) {
             ob.draw(g2);
         }
     }

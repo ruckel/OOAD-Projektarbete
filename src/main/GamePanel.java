@@ -23,9 +23,12 @@ public class GamePanel extends JPanel implements Runnable {
     private final UI ui = new UI(this);
     InputHandler inputHandler = new InputHandler();
     public Player player = new Player(this, inputHandler);
-
     public UnitLoader unitLoader = new UnitLoader(this);
     public CollisionHandler ch = new CollisionHandler(this);
+
+    //UNITS
+    public Laser[] lasers = new Laser[10];
+    public Obstacle[] obstacles = new Obstacle[20];
 
 
     public GamePanel() {
