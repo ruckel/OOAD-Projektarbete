@@ -2,6 +2,7 @@ package ui;
 
 import main.GamePanel;
 import unit.Laser;
+import unit.Obstacle;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -24,7 +25,11 @@ public class UI {
         for (Laser laser:gp.player.lasers) {
             laser.update();
         }
-        gp.ob.update();
+        gp.unitLoader.update();
+        for (Obstacle ob :
+                gp.unitLoader.obstacles) {
+            ob.update();
+        }
     }
     public void draw(Graphics2D g2){
 
@@ -33,7 +38,10 @@ public class UI {
         for (Laser laser:gp.player.lasers) {
             laser.draw(g2);
         }
-        gp.ob.draw(g2);
+        for (Obstacle ob :
+                gp.unitLoader.obstacles) {
+            ob.draw(g2);
+        }
     }
     private BufferedImage loadImage(String name){
         BufferedImage img = null;
