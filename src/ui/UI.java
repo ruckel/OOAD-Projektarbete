@@ -18,12 +18,12 @@ public class UI {
     private final BufferedImage background;
 
 
-    public UI(GamePanel gp){
+    public UI(GamePanel gp) {
         this.gp = gp;
 
         background = loadImage("background");
     }
-    public void update(){
+  public void update(){
 //        gp.player.update();
 //        for (Laser laser :
 //                gp.lasers) {
@@ -58,4 +58,5 @@ public class UI {
         }
         return img;
     }
+
 }
