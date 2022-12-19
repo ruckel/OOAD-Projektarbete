@@ -1,5 +1,6 @@
 package ui;
 
+import Sound.SoundTracks;
 import main.GamePanel;
 
 import java.awt.*;
@@ -10,11 +11,13 @@ public class PauseState implements GameState{
         g2.setColor(Color.white);
         g2.setFont(g2.getFont().deriveFont(Font.BOLD, 32F));
         g2.drawString("GAME IS PAUSED", getCenterForX(g2,"GAME IS PAUSED", gp), gp.height / 2);
+
+        gp.sound.playMusic();
+
     }
 
     @Override
     public void update(GamePanel gp) {
-
     }
 
     @Override

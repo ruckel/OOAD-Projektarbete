@@ -33,10 +33,15 @@ public class InputHandler implements KeyListener {
         }
 
         if(key == KeyEvent.VK_ENTER){
+            gp.sound.stopSounds();
             gp.setNextState();
         }
         if(key == KeyEvent.VK_ESCAPE){
             gp.setLastState();
+            gp.sound.stopSounds();
+        }
+        if (key == KeyEvent.VK_M) {
+            //gp.sound.mute(); //broken
         }
     }
 

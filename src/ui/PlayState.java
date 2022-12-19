@@ -1,5 +1,6 @@
 package ui;
 
+import Sound.SoundTracks;
 import main.GamePanel;
 import main.Utility;
 import unit.Laser;
@@ -15,6 +16,7 @@ public class PlayState implements GameState {
     public void draw(Graphics2D g2, GamePanel gp) {
         g2.drawImage(background, 0, 0,null);
 
+
         gp.player.draw(g2);
         for (Laser laser :
                 gp.lasers) {
@@ -29,6 +31,10 @@ public class PlayState implements GameState {
         g2.setFont(g2.getFont().deriveFont(Font.BOLD, 12F));
         g2.setColor(Color.white);
         g2.drawString("Score: " + gp.player.getScore(), gp.size / 2, gp.size / 2);
+
+
+        gp.sound.playMusic();
+
     }
 
     @Override

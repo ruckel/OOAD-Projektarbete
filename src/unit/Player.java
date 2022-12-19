@@ -1,5 +1,6 @@
 package unit;
 
+import Sound.SoundTracks;
 import main.GamePanel;
 import main.InputHandler;
 import main.Utility;
@@ -50,6 +51,7 @@ public class Player extends Unit{
             }
         } else if(inputHandler.shoot){
             shoot = true;
+            gp.sound.playSoundEffect(SoundTracks.LASER);
             gp.lasers[laserCount].setUpLaser(positionX - 1, 7);
             laserCount++;
             if (laserCount == 10){
