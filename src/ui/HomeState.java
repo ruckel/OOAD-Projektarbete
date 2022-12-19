@@ -8,39 +8,37 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 public class HomeState implements GameState {
-    private final BufferedImage homebackground;
+    private final BufferedImage homeBackground;
 
     private boolean initiation = false;
 
     public HomeState() {
-       homebackground = loadImage("homebackground");
+       homeBackground = loadImage("homebackground");
     }
     @Override
     public void draw(Graphics2D g2, GamePanel gp) {
 
+        int y = gp.size*4;
 
-        g2.drawImage(homebackground, 0, 0, gp.width, gp.height, null);
-        //g2.fillRect(0, 0, gp.width, gp.height);
+        g2.drawImage(homeBackground, 0, 0, gp.width, gp.height, null);
 
         g2.setFont(g2.getFont().deriveFont(Font.BOLD, 110F));
         String title = "Space War";
-        g2.drawString(title, gp.size/2, gp.size*3);
-        getCenterForX(g2, title, gp);
 
         g2.setColor(Color.black);
-        g2.drawString(title, gp.size / 2 - 5, gp.size * 3+5);
+        g2.drawString(title, getCenterForX(g2, title, gp) - 5, gp.size * 3+5);
 
         g2.setColor(Color.white);
-        g2.drawString(title, gp.size / 2, gp.size * 3);
+        g2.drawString(title, getCenterForX(g2, title, gp), gp.size * 3);
 
 
         g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 20F));
-        g2.drawString("press enter to start new game", gp.size/2+155, gp.size*4);
-        getCenterForX(g2, "press enter to start new game", gp);
+        g2.drawString("press enter to start new game", getCenterForX(g2, "press enter to start new game", gp), y);
+
+        y += gp.size /2;
 
         g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 20F));
-        g2.drawString("  or esc to exit screen", gp.size/2+175, gp.size*5-30);
-        getCenterForX(g2, "  or esc to exit screen", gp);
+        g2.drawString("or esc to exit screen", getCenterForX(g2, "or esc to exit screen", gp), y);
 
     }
 
@@ -48,8 +46,9 @@ public class HomeState implements GameState {
     public void update(GamePanel gp) {
 
         if(initiation){
-            
             initiation = false;
+            gp.player.resetScore();
+            gp.unitLoader.resetUnits(gp);
         }
 
     }

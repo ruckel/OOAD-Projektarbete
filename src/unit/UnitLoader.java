@@ -51,4 +51,17 @@ public class UnitLoader {
         Random rng = new Random();
         return rng.nextInt(5, gp.width - gp.size);
     }
+    public void resetUnits(GamePanel gp){
+        gp.player.update(gp);
+        for (Laser laser :
+                gp.lasers) {
+            laser.reset();
+        }
+
+        gp.unitLoader.update();
+        for (Obstacle ob :
+                gp.obstacles) {
+            ob.reset();
+        }
+    }
 }

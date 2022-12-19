@@ -46,10 +46,11 @@ public class Obstacle extends Unit{
         }
     }
     public void reset(){
+        alive = false;
         positionY = defaultY;
     }
-    public void draw(Graphics2D g2){
-        if(alive){
+    public void draw(Graphics2D g2) {
+        if (alive) {
             g2.drawImage(image, positionX, positionY, null);
         }
     }
