@@ -14,7 +14,7 @@ public class PlayState implements GameState {
     @Override
     public void draw(Graphics2D g2, GamePanel gp) {
         final BufferedImage background = new Utility().loadImage("background", gp.width, gp.height);
-        final BufferedImage heart = new Utility().loadImage("heart2", gp.size/3,gp.size/3);
+        final BufferedImage heart = new Utility().loadImage("heart", gp.size/3,gp.size/3);
         g2.drawImage(background, 0, 0,null);
 
         gp.player.draw(g2);
