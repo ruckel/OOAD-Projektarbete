@@ -2,13 +2,15 @@ package ui;
 
 import main.GamePanel;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 
 public class HomeScreen implements Draw {
-
-
+    Image image;
     @Override
     public void draw(Graphics2D g2, GamePanel gp) {
 
@@ -35,10 +37,14 @@ public class HomeScreen implements Draw {
         g2.drawString("or esc to exit screen", gp.size/2+175, gp.size*3+40);
         getCenterForX(g2, "or esc to exit screen", gp);
 
-
     }
     private int getCenterForX(Graphics2D g2, String text, GamePanel gp){
         int length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
         return gp.width/2 - length/2;
+    }
+
+    public void background() throws IOException {
+        image = ImageIO.read(new File("resources/homebackground.jpeg"));
+
     }
 }
