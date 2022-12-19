@@ -1,7 +1,7 @@
 package main;
 
 import ui.GameState;
-import ui.HomeScreen;
+import ui.HomeState;
 import ui.State;
 import unit.Laser;
 import unit.Obstacle;
@@ -48,7 +48,7 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     private void setupGame() {
-        state.setCurrentGameState(new HomeScreen());
+        state.setCurrentGameState(new HomeState());
         for (int i = 0; i < lasers.length; i++) {
             lasers[i] = new Laser(size, height - (size + size/2));
         }

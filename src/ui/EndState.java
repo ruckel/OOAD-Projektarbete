@@ -18,12 +18,12 @@ public class EndState implements GameState{
     }
     @Override
     public GameState setNext() {
-        return new HomeScreen();
+        return new HomeState();
     }
 
     @Override
     public GameState setLast() {
-        return new HomeScreen();
+        return new HomeState();
     }
 
     private int getCenterForX(Graphics2D g2, String text, GamePanel gp){

@@ -7,10 +7,10 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-public class HomeScreen implements Draw {
+public class HomeState implements GameState {
     private final BufferedImage homebackground;
 
-    public HomeScreen() {
+    public HomeState() {
        homebackground = loadImage("homebackground");
     }
     @Override
@@ -41,6 +41,22 @@ public class HomeScreen implements Draw {
         getCenterForX(g2, "  or esc to exit screen", gp);
 
     }
+
+    @Override
+    public void update(GamePanel gp) {
+
+    }
+
+    @Override
+    public GameState setNext() {
+        return null;
+    }
+
+    @Override
+    public GameState setLast() {
+        return null;
+    }
+
     private int getCenterForX(Graphics2D g2, String text, GamePanel gp){
         int length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
         return gp.width/2 - length/2;

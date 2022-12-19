@@ -1,10 +1,5 @@
 package main;
 
-import ui.HomeScreen;
-import ui.PauseSate;
-import ui.PlaySate;
-import unit.Obstacle;
-
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 

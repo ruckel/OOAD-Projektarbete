@@ -24,7 +24,7 @@ public class PauseSate implements GameState{
 
     @Override
     public GameState setLast() {
-        return new HomeScreen();
+        return new HomeState();
     }
 
     private int getCenterForX(Graphics2D g2, String text, GamePanel gp){
