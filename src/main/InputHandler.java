@@ -41,7 +41,7 @@ public class InputHandler implements KeyListener {
             gp.sound.stopSounds();
         }
         if (key == KeyEvent.VK_M) {
-            //gp.sound.mute(); //broken
+            gp.sound.mute();
         }
     }
 
