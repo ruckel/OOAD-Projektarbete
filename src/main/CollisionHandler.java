@@ -1,6 +1,7 @@
 package main;
 
 import ui.EndState;
+import ui.PlayState;
 import unit.Unit;
 
 public class CollisionHandler {
@@ -24,7 +25,14 @@ public class CollisionHandler {
         }
         if (gp.player.hitBox.intersects(unit.hitBox)){
             unit.alive = false;
-            gp.setState(new EndState());
+
+            if(!gp.player.invincible) {
+                gp.player.lives--;
+                gp.player.invincible = true;
+            }
+            if(gp.player.lives == 0){
+                gp.setState(new EndState());
+            }
             return true;
         }
         return false;

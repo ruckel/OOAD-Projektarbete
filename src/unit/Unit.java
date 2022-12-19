@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 
 public class Unit {
     protected BufferedImage image;
+    protected BufferedImage hurt;
 
     public Rectangle hitBox = new Rectangle(0, 0, 0, 0);
     public int positionX, positionY;
