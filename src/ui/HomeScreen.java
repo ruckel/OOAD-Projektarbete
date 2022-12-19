@@ -1,66 +1,58 @@
 package ui;
 
 import main.GamePanel;
-import unit.Obstacle;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
-public class HomeScreen implements GameState {
+public class HomeScreen implements Draw {
+    private final BufferedImage homebackground;
 
+    public HomeScreen() {
+       homebackground = loadImage("homebackground");
+    }
     @Override
     public void draw(Graphics2D g2, GamePanel gp) {
 
-        int x = 0;
 
-        int y = 0;
+        g2.drawImage(homebackground, 0, 0, gp.width, gp.height, null);
+        //g2.fillRect(0, 0, gp.width, gp.height);
 
-        g2.setColor(Color.DARK_GRAY);
-        g2.fillRect(0, 0, gp.width, gp.height);
-
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 32F));
-        String title = "SPACE WAR YAY!!!!";
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 110F));
+        String title = "Space War";
+        g2.drawString(title, gp.size/2, gp.size*3);
+        getCenterForX(g2, title, gp);
 
         g2.setColor(Color.black);
-        g2.drawString(title, gp.size / 2 + 5, gp.size * 2 - 5);
+        g2.drawString(title, gp.size / 2 - 5, gp.size * 3+5);
 
         g2.setColor(Color.white);
-        g2.drawString(title, gp.size / 2, gp.size * 2);
+        g2.drawString(title, gp.size / 2, gp.size * 3);
 
-        x = getCenterForX(g2, "MENY VAL 1", gp);
-        y = gp.size * 4;
 
-        g2.drawString("MENY VAL 1", x, y);
-        g2. drawString("->", x - gp.size / 2, y);
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 20F));
+        g2.drawString("press enter to start new game", gp.size/2+155, gp.size*4);
+        getCenterForX(g2, "press enter to start new game", gp);
 
-        y = gp.size * 5;
-        g2.drawString("MENY VAL 2", x, y);
-        g2. drawString("->", x - gp.size / 2, y);
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 20F));
+        g2.drawString("  or esc to exit screen", gp.size/2+175, gp.size*5-30);
+        getCenterForX(g2, "  or esc to exit screen", gp);
 
-        y = gp.size * 6;
-        g2.drawString("MENY VAL 3", x, y);
-        g2. drawString("->", x - gp.size / 2, y);
-
-        gp.player.resetScore();
-        for (Obstacle ob: gp.obstacles
-        ) {
-            ob.reset();
-        }
     }
-    @Override
-    public void update(GamePanel gp){}
-
-    @Override
-    public GameState setNext() {
-        return new PlaySate();
-    }
-
-    @Override
-    public GameState setLast() {
-        return this;
-    }
-
     private int getCenterForX(Graphics2D g2, String text, GamePanel gp){
         int length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
         return gp.width/2 - length/2;
+
+    }
+    private BufferedImage loadImage(String name){
+        BufferedImage img = null;
+        try{
+            img = ImageIO.read(getClass().getResourceAsStream("/" + name + ".png"));
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        return img;
     }
 }
