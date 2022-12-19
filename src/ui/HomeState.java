@@ -10,6 +10,8 @@ import java.io.IOException;
 public class HomeState implements GameState {
     private final BufferedImage homebackground;
 
+    private boolean initiation = false;
+
     public HomeState() {
        homebackground = loadImage("homebackground");
     }
@@ -45,16 +47,22 @@ public class HomeState implements GameState {
     @Override
     public void update(GamePanel gp) {
 
+        if(initiation){
+            
+            initiation = false;
+        }
+
     }
 
     @Override
     public GameState setNext() {
-        return null;
+        return new PlayState();
     }
 
     @Override
     public GameState setLast() {
-        return null;
+        System.exit(0);
+        return this;
     }
 
     private int getCenterForX(Graphics2D g2, String text, GamePanel gp){

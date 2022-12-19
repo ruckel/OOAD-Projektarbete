@@ -7,7 +7,7 @@ import unit.Obstacle;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class PlaySate implements GameState {
+public class PlayState implements GameState {
 
     private final BufferedImage background = new Utility().loadImage("background", 640, 640);
 
@@ -53,6 +53,6 @@ public class PlaySate implements GameState {
 
     @Override
     public GameState setLast() {
-        return new PauseSate();
+        return new PauseState();
     }
 }

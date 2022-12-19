@@ -4,7 +4,7 @@ import main.GamePanel;
 
 import java.awt.*;
 
-public class PauseSate implements GameState{
+public class PauseState implements GameState{
     @Override
     public void draw(Graphics2D g2, GamePanel gp) {
         g2.setColor(Color.white);
@@ -19,7 +19,7 @@ public class PauseSate implements GameState{
 
     @Override
     public GameState setNext() {
-        return new PlaySate();
+        return new PlayState();
     }
 
     @Override
