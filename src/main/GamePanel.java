@@ -80,7 +80,7 @@ public class GamePanel extends JPanel implements Runnable {
         }
     }
 
-    public void update() {
+    private void update() {
         state.update(this);
     }
 

@@ -10,7 +10,7 @@ public class Player extends Unit{
 
     private final InputHandler inputHandler;
 
-    public int score = 0;
+    private int score = 0;
 
     //Shooting
     private int laserCount = 0;
