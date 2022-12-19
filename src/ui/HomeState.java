@@ -10,7 +10,7 @@ import java.io.IOException;
 public class HomeState implements GameState {
     private final BufferedImage homeBackground;
 
-    private boolean initiation = false;
+    private boolean initiation = true;
 
     public HomeState() {
        homeBackground = loadImage("homebackground");

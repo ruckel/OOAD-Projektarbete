@@ -1,6 +1,5 @@
 package unit;
 
-import main.GamePanel;
 import main.Utility;
 
 import java.awt.*;
