@@ -4,10 +4,7 @@ import Sound.Sound;
 import ui.GameState;
 import ui.HomeState;
 import ui.State;
-import unit.Laser;
-import unit.Obstacle;
-import unit.Player;
-import unit.UnitLoader;
+import unit.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,7 +18,8 @@ public class GamePanel extends JPanel implements Runnable {
     final private double FPS = 60.0;
     //UNITS
     public Laser[] lasers = new Laser[10];
-    public Obstacle[] obstacles = new Obstacle[20];
+    //public Obstacle[] obstacles = new Obstacle[20];
+    public Obstacle[] obstacles = new Meteorite[20];
 
     //OBJEKT
     private Thread gameThread;
@@ -55,7 +53,7 @@ public class GamePanel extends JPanel implements Runnable {
             lasers[i] = new Laser(size, height - (size + size/2));
         }
         for (int i = 0; i < obstacles.length; i++) {
-            obstacles[i] = new Obstacle(size, -size);
+            obstacles[i] = new Meteorite(size, -size);
         }
 
     }

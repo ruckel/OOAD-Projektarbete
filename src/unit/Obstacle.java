@@ -49,9 +49,5 @@ public class Obstacle extends Unit{
         alive = false;
         positionY = defaultY;
     }
-    public void draw(Graphics2D g2) {
-        if (alive) {
-            g2.drawImage(image, positionX, positionY, null);
-        }
-    }
+    public void draw(Graphics2D g2) {}
 }
