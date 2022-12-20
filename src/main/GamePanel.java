@@ -30,7 +30,7 @@ public class GamePanel extends JPanel implements Runnable {
     public Player player = new Player(inputHandler, size, height - (size + size / 10));
     public UnitLoader unitLoader = new UnitLoader(this);
     public CollisionHandler ch = new CollisionHandler(this);
-    Sound sound = new Sound(this);
+    public Sound sound = new Sound(this);
 
     public GamePanel() {
 
@@ -105,4 +105,6 @@ public class GamePanel extends JPanel implements Runnable {
     public void setLastState(){
         state.setLastState();
     }
+
+
 }
