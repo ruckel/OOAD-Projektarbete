@@ -1,6 +1,7 @@
 package ui;
 
 import main.GamePanel;
+import main.Property;
 import main.Utility;
 import unit.Laser;
 import unit.Obstacle;
@@ -10,7 +11,7 @@ import java.awt.image.BufferedImage;
 public class PlayState implements GameState {
 
     private boolean initiation = true;
-
+    Property property = Property.getInstance();
     @Override
     public void draw(Graphics2D g2, GamePanel gp) {
         final BufferedImage background = new Utility().loadImage("background", gp.width, gp.height);
@@ -31,19 +32,19 @@ public class PlayState implements GameState {
         g2.setFont(g2.getFont().deriveFont(Font.BOLD, 12F));
         g2.setColor(Color.white);
         g2.drawString("Score: " + gp.player.getScore(), gp.size / 2, gp.size / 2);
-        g2.drawString("Lives: ", gp.width-gp.size*2-heart.getWidth(), gp.size / 2);
+        g2.drawString("Lives: ", gp.size / 2, gp.size-15);
+        g2.drawString("Difficulty: " + property.getProperty("difficulty"), gp.size / 2, gp.size / 2 -15);
 
-        if(gp.player.lives == 3){
-            g2.drawImage(heart, gp.width-gp.size, gp.size/4, null);
-            g2.drawImage(heart,gp.width-gp.size-heart.getWidth(), gp.size/4, null);
-            g2.drawImage(heart, gp.width-gp.size-heart.getWidth()*2,gp.size/4, null);
-        } else if (gp.player.lives == 2) {
-            g2.drawImage(heart,gp.width-gp.size-heart.getWidth(), gp.size/4, null);
-            g2.drawImage(heart, gp.width-gp.size-heart.getWidth()*2,gp.size/4, null);
-        } else {
-            g2.drawImage(heart, gp.width-gp.size-heart.getWidth()*2,gp.size/4, null);
+
+        if (gp.player.lives != 0) {
+            int integer = 0;
+            for (int i = 0; i < gp.player.lives + 1; i++) {
+                g2.drawImage(heart, gp.size + integer + 5, gp.size -29, null);
+                integer = heart.getWidth() * i;
+            }
         }
 
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 14F));
 
         if(gp.sound.isMuted()) {
             g2.setFont(g2.getFont().deriveFont(Font.BOLD, 14F));

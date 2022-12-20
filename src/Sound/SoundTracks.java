@@ -4,8 +4,8 @@ public enum SoundTracks {
         MENU("src/resources/Skyrogue_menu.wav"),
         GAMEPLAY("src/resources/Skyrogue_bgm.wav"),
         PAUSE("src/resources/Skyrogue_mood.wav"),
-        COLLISION("src/resources/Collision3.wav"),
-        LASER("src/resources/Laser2.wav");
+        COLLISION("src/resources/Collision"),
+        LASER("src/resources/Laser");
 
         private String soundTrack;
 

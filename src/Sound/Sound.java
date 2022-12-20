@@ -1,6 +1,7 @@
 package Sound;
 
 import main.GamePanel;
+import main.Property;
 import ui.PlayState;
 
 import javax.sound.sampled.*;
@@ -11,24 +12,35 @@ import static javax.sound.sampled.AudioSystem.getAudioInputStream;
 
 public class Sound {
     private int musicVolume = 2; // 0-10
-    private int soundEffectVolume = 5; // 0-10
+    private int soundEffectVolume = 6; // 0-10
 
     GamePanel gp;
+
     Clip musicClip;
     Clip soundEffectClip;
     SoundTracks sound;
+    Property property = Property.getInstance();
 
     private boolean musicPlaying = false;
     private boolean muted = false;
+    private boolean superGun = Boolean.parseBoolean(property.getProperty("supergun"));
+
+
+    String[] laserSound = {"src/resources/Laser1.wav", "src/resources/Laser1.wav","src/resources/Collision2.wav"};
+    String[] collisionSound = {"src/resources/Collision1.wav", "src/resources/Collision1.wav", "src/resources/Collision2.wav", "src/resources/Collision3.wav"};
+
 
 
     public Sound(GamePanel gp){
         this.gp = gp;
+        musicVolume = Integer.parseInt(property.getProperty("musicvolume"));
+        soundEffectVolume = Integer.parseInt(property.getProperty("soundeffectsvolume"));
     }
 
 
-    public void playSoundEffect(SoundTracks sound) {
-        File file = new File(sound.getSoundTrack());
+    public void playSoundEffect(SoundTracks soundType, int index) {
+
+        File file = new File(soundType.getSoundTrack() + index + ".wav");
 
 
         try (AudioInputStream in = getAudioInputStream(file)) {
@@ -54,7 +66,6 @@ public class Sound {
         if (gp.sound.getMusicPlaying()) {
             return;
         }
-
         /*
         Picks Enum based on gp State. Could probably be done better.
          */
@@ -110,12 +121,22 @@ public class Sound {
             gp.sound.muted = true;
             gp.sound.musicClip.stop();
         } else {
-            gp.sound.musicVolume = 2;
-            gp.sound.soundEffectVolume = 8;
+            gp.sound.musicVolume = Integer.parseInt(property.getProperty("musicvolume"));
+            gp.sound.soundEffectVolume = Integer.parseInt(property.getProperty("soundeffectsvolume"));
             gp.sound.muted = false;
             gp.sound.musicClip.start();
             gp.sound.setMusicPlaying(true);
         }
+    }
+
+    public void deathMute(){
+        gp.sound.musicClip.stop();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        gp.sound.musicClip.start();
     }
 
     public boolean isMuted() {

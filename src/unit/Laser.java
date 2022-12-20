@@ -16,8 +16,9 @@ public class Laser extends Unit {
 
         setUpHitBox();
     }
-    public void setUpLaser(int positionX, int speed){
+    public void setUpLaser(int positionX, int positionY, int speed){
         super.positionX = positionX;
+        super.positionY = positionY;
         super.speed = speed;
         alive = true;
     }

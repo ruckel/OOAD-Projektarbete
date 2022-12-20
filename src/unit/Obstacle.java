@@ -1,6 +1,7 @@
 package unit;
 
 import main.GamePanel;
+import main.Property;
 import main.Utility;
 
 import java.awt.*;
@@ -9,6 +10,7 @@ public class Obstacle extends Unit{
 
     private final int defaultY;
 
+
     public Obstacle(int size, int defaultY){
         image = new Utility().loadImage("obstacle", size, size);
         this.defaultY = defaultY;
@@ -16,6 +18,7 @@ public class Obstacle extends Unit{
         positionY = defaultY;
         setUpHitBox();
     }
+
     private void setUpHitBox(){
         hitBox.x = 10;
         hitBox.y = 15;
@@ -34,6 +37,7 @@ public class Obstacle extends Unit{
             if(positionY >= gp.height){
                 alive = false;
                 positionY = defaultY;
+                gp.player.incrementScore(false);
             } else {
                 positionY += speed;
             }

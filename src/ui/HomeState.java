@@ -23,7 +23,7 @@ public class HomeState implements GameState {
         g2.drawImage(homeBackground, 0, 0, gp.width, gp.height, null);
 
         g2.setFont(g2.getFont().deriveFont(Font.BOLD, 110F));
-        String title = "Space War";
+        String title = "spacewar";
 
         g2.setColor(Color.black);
         g2.drawString(title, getCenterForX(g2, title, gp) - 5, gp.size * 3+5);

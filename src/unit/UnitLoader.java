@@ -1,24 +1,30 @@
 package unit;
 
 import main.GamePanel;
+import main.Property;
 
 import java.util.Random;
 
 public class UnitLoader {
 
     private final GamePanel gp;
+    Property property = Property.getInstance();
+    //Difficulty
+    int difficultyMultiplier = Integer.parseInt(property.getProperty("difficulty"));
 
     private int obstacleCount = 0;
     private int loopCount = 0;
-    private int obstacleInterval = 50;
+    private int obstacleInterval = 50 / difficultyMultiplier;
+    private int initiation = 2;
 
     public UnitLoader(GamePanel gp){
         this.gp = gp;
     }
 
     public void update(){
+        difficultyMultiplier = gp.difficulty;
         loopCount++;
-        if (loopCount == obstacleInterval){
+        if (loopCount == obstacleInterval && loopCount > initiation){
             loopCount = 0;
             gp.obstacles[obstacleCount].setObstacle(randomSpawnX(), randomSpeed());
             obstacleCount++;
@@ -35,16 +41,16 @@ public class UnitLoader {
         int speed;
         Random rng = new Random();
         int randomNr = rng.nextInt(1, 101);
-        if (randomNr < 20){
+        if (randomNr < 5){
             speed = 1;
-        } else if (randomNr < 50){
+        } else if (randomNr < 40){
             speed = 2;
-        } else if (randomNr < 80){
+        } else if (randomNr < 90){
             speed = 3;
         } else {
-            speed = 4;
+            speed = 6;
         }
-        return speed;
+        return speed * difficultyMultiplier;
     }
 
     private int randomSpawnX() {

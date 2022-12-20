@@ -3,6 +3,7 @@ package main;
 import Sound.Sound;
 import ui.GameState;
 import ui.HomeState;
+import ui.PlayState;
 import ui.State;
 import unit.Laser;
 import unit.Obstacle;
@@ -13,14 +14,16 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GamePanel extends JPanel implements Runnable {
-
+    Property property = Property.getInstance();
+    String startupState = "new HomeState()"; //new HomeState()
     //Värden att mäta med(mätinstrument)
-    public int size = 64;
-    public int width = size * 10;
-    public int height = size * 10;
+    public int size = 64;  //64
+    public int width = size * Integer.parseInt(property.getProperty("width")); //10
+    public int height = size * Integer.parseInt(property.getProperty("height")); //10
     final private double FPS = 60.0;
+    public int difficulty = Integer.parseInt(property.getProperty("difficulty"));
     //UNITS
-    public Laser[] lasers = new Laser[10];
+    public Laser[] lasers = new Laser[1000];
     public Obstacle[] obstacles = new Obstacle[20];
 
     //OBJEKT
@@ -31,6 +34,8 @@ public class GamePanel extends JPanel implements Runnable {
     public UnitLoader unitLoader = new UnitLoader(this);
     public CollisionHandler ch = new CollisionHandler(this);
     public Sound sound = new Sound(this);
+    boolean fastBoot = Boolean.parseBoolean(property.getProperty("fastboot"));
+
 
     public GamePanel() {
 
@@ -50,7 +55,11 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     private void setupGame() {
-        state.setCurrentGameState(new HomeState());
+        if(fastBoot){
+            state.setCurrentGameState(new PlayState());
+        } else {
+            state.setCurrentGameState(new HomeState());
+        }
         for (int i = 0; i < lasers.length; i++) {
             lasers[i] = new Laser(size, height - (size + size/2));
         }
@@ -84,6 +93,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     private void update() {
         state.update(this);
+        difficulty = Integer.parseInt(property.getProperty("difficulty"));
     }
 
     public void paintComponent(Graphics g) {
