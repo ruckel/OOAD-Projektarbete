@@ -1,5 +1,6 @@
 package main;
 
+import Sound.Sound;
 import ui.GameState;
 import ui.HomeState;
 import ui.State;
@@ -17,7 +18,7 @@ public class GamePanel extends JPanel implements Runnable {
     public int size = 64;
     public int width = size * 10;
     public int height = size * 10;
-    final private double FPS = 60.0;
+    final private double FPS = 120.0;
     //UNITS
     public Laser[] lasers = new Laser[10];
     public Obstacle[] obstacles = new Obstacle[20];
@@ -29,6 +30,7 @@ public class GamePanel extends JPanel implements Runnable {
     public Player player = new Player(inputHandler, size, height - (size + size / 10));
     public UnitLoader unitLoader = new UnitLoader(this);
     public CollisionHandler ch = new CollisionHandler(this);
+    public Sound sound = new Sound(this);
 
     public GamePanel() {
 
@@ -64,9 +66,7 @@ public class GamePanel extends JPanel implements Runnable {
         double delta = 0;
         long lastUpdate = System.nanoTime(); //nanosekunder för precision
         long currentTime;
-
         while (gameThread.isAlive()) {
-
             currentTime = System.nanoTime();
 
             delta += (currentTime - lastUpdate) / updateInterval;
@@ -84,6 +84,8 @@ public class GamePanel extends JPanel implements Runnable {
         state.update(this);
     }
 
+
+
     public void paintComponent(Graphics g) {
         super.paintComponents(g);
 
@@ -93,8 +95,9 @@ public class GamePanel extends JPanel implements Runnable {
     }
     public void setState(GameState state){
         this.state.setCurrentGameState(state);
+        sound.playMusic();
     }
-    public GameState setState(){
+    public GameState getState(){
         return state.getCurrentGameState();
     }
     public void setNextState(){

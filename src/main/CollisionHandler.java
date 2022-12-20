@@ -1,5 +1,6 @@
 package main;
 
+import Sound.SoundTracks;
 import ui.EndState;
 import unit.Unit;
 
@@ -24,6 +25,7 @@ public class CollisionHandler {
         }
         if (gp.player.hitBox.intersects(unit.hitBox)){
             unit.alive = false;
+            gp.sound.playSoundEffect(SoundTracks.COLLISION);
             gp.setState(new EndState());
             return true;
         }

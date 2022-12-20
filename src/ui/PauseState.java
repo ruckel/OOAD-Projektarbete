@@ -1,5 +1,6 @@
 package ui;
 
+import Sound.SoundTracks;
 import main.GamePanel;
 
 import java.awt.*;
@@ -24,11 +25,19 @@ public class PauseState implements GameState{
         g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 20F));
         g2.drawString("or esc to go home", getCenterForX(g2, "or esc to go home", gp), y);
 
+        // TODO slightly broken
+        if(gp.sound.isMuted()) {
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 14F));
+            g2.drawString("mute", gp.size * 9 + 25, 15);
+        }
+
     }
 
     @Override
     public void update(GamePanel gp) {
-
+        if (!gp.sound.getMusicPlaying()){
+            gp.sound.playMusic();
+        }
     }
 
     @Override

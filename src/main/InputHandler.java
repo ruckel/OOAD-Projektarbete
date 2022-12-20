@@ -34,9 +34,14 @@ public class InputHandler implements KeyListener {
 
         if(key == KeyEvent.VK_ENTER){
             gp.setNextState();
+            gp.sound.stopSounds();
         }
         if(key == KeyEvent.VK_ESCAPE){
             gp.setLastState();
+            gp.sound.stopSounds();
+        }
+        if (key == KeyEvent.VK_M) {
+            gp.sound.mute();
         }
     }
 

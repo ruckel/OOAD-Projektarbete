@@ -18,7 +18,7 @@ public class EndState implements GameState{
     }
     @Override
     public GameState setNext() {
-        return new HomeState();
+        return new PlayState();
     }
 
     @Override
