@@ -27,15 +27,16 @@ public class CollisionHandler {
         }
         if (gp.player.hitBox.intersects(unit.hitBox)){
             unit.alive = false;
-            gp.sound.playSoundEffect(SoundTracks.COLLISION);
-            gp.setState(new EndState());
+
 
             if(!gp.player.invincible) {
                 gp.player.lives--;
                 gp.player.invincible = true;
+                gp.sound.playSoundEffect(SoundTracks.COLLISION);
             }
             if(gp.player.lives == 0){
                 gp.setState(new EndState());
+                gp.sound.playSoundEffect(SoundTracks.COLLISION);
             }
             return true;
         }
