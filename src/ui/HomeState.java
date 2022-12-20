@@ -51,8 +51,7 @@ public class HomeState implements GameState {
 
         if(initiation){
             initiation = false;
-            gp.player.reset();
-            gp.unitLoader.resetUnits(gp);
+            gp.unitLoader.resetUnits();
             gp.player.resetScore();
             gp.unitLoader.resetUnits();
         }

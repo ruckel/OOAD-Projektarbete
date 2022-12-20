@@ -116,7 +116,7 @@ public class Player extends Unit{
     public void incrementScore(){
         score++;
     }
-    public void reset(){
+    public void resetScore(){
         score = 0;
         lives = 3;
         invincible = false;
