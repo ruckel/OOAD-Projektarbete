@@ -99,6 +99,9 @@ public class GamePanel extends JPanel implements Runnable {
     public GameState setState(){
         return state.getCurrentGameState();
     }
+    public GameState getState(){
+        return state.getCurrentGameState();
+    }
     public void setNextState(){
         state.setNextState();
     }
