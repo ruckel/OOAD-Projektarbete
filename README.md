@@ -2,6 +2,8 @@
 
 Melinda, Oscar, Gustav, Kevin
 
-Use case diagram: https://lucid.app/lucidchart/542b5d7a-4c80-4cd6-a135-c6c499241856/edit?invitationId=inv_2ce68a25-33ff-4c0a-be06-dac469f74d7f
+Use case diagram: https://lucid.app/lucidchart/8c1708de-ec27-4bd2-9904-cdbd93fcfe66/edit?viewport_loc=-175%2C40%2C2219%2C1103%2C.Q4MUjXso07N&invitationId=inv_44c98dd6-d25c-47b4-8f48-a584fbef0405
 
-Class diagram: https://lucid.app/lucidchart/17cd5004-e206-440f-a7d3-7fa790aaf62d/edit?viewport_loc=-9%2C-25%2C2219%2C1103%2C0_0&invitationId=inv_6fed24f0-93dc-4e27-83c0-00f6b8af5f91
+Class diagram: https://lucid.app/lucidchart/af664fdb-2ebf-44a5-9a9b-bf427275fb8f/edit?viewport_loc=-315%2C-96%2C4992%2C2481%2C0_0&invitationId=inv_0efac627-1372-406c-bc44-7e1e47b272b7
+
+Presentation: https://onedrive.live.com/view.aspx?resid=ED66F3FB0FD7AACE%21885&ithint=file%2Cpptx&authkey=%21AOMl3vgkStaH92A
