@@ -10,10 +10,18 @@ public class EndState implements GameState{
         g2.setColor(Color.white);
         g2.setFont(g2.getFont().deriveFont(Font.BOLD, 32F));
         g2.drawString("GAME OVERUUUU", getCenterForX(g2,"GAME OVERUUUU", gp), gp.height / 2);
+
+        if(gp.sound.isMuted()) {
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 14F));
+            g2.drawString("mute", gp.size * 9 + 25, 15);
+        }
     }
 
     @Override
     public void update(GamePanel gp) {
+        if (!gp.sound.getMusicPlaying()){
+            gp.sound.playMusic();
+        }
 
     }
     @Override

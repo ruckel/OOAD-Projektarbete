@@ -53,8 +53,10 @@ public class PlayState implements GameState {
                 gp.obstacles) {
             ob.update(gp);
         }
-        if (initiation || !gp.sound.getMusicPlaying()){
+        if (initiation){
             initiation = false;
+        }
+        if (!gp.sound.getMusicPlaying()){
             gp.sound.playMusic();
         }
     }
