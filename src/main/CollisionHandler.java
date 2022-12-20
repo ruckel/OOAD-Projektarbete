@@ -25,6 +25,7 @@ public class CollisionHandler {
                 }
             }
         }
+
         if (gp.player.hitBox.intersects(unit.hitBox)){
             unit.alive = false;
 
@@ -36,7 +37,6 @@ public class CollisionHandler {
                 gp.setState(new EndState());
             }
             gp.sound.playSoundEffect(SoundTracks.COLLISION);
-            gp.setState(new EndState());
             return true;
         }
         return false;
