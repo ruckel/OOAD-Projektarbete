@@ -108,7 +108,7 @@ public class Sound {
             gp.sound.musicVolume = 0;
             gp.sound.soundEffectVolume = 0;
             gp.sound.muted = true;
-            gp.sound.stopSounds();
+            gp.sound.musicClip.stop();
         } else {
             gp.sound.musicVolume = 2;
             gp.sound.soundEffectVolume = 8;
