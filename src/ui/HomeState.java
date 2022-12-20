@@ -52,7 +52,7 @@ public class HomeState implements GameState {
         if(initiation){
             
             initiation = false;
-            gp.player.resetScore();
+            gp.player.reset();
             gp.unitLoader.resetUnits();
             gp.sound.playMusic();
         }

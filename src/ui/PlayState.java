@@ -11,6 +11,7 @@ import java.awt.image.BufferedImage;
 public class PlayState implements GameState {
 
     private final BufferedImage background = new Utility().loadImage("background", 640, 640);
+    private boolean initiation = true;
 
     @Override
     public void draw(Graphics2D g2, GamePanel gp) {
