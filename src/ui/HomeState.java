@@ -11,12 +11,12 @@ public class HomeState implements GameState {
 
     private final BufferedImage homebackground;
 
-    private boolean initiation = false;
+    private boolean initiation = true;
 
 
     public HomeState() {
-       homebackground = loadImage("homebackground");
-        }
+        homebackground = loadImage("homebackground");
+    }
     @Override
     public void draw(Graphics2D g2, GamePanel gp) {
 
@@ -44,16 +44,18 @@ public class HomeState implements GameState {
         g2.drawString("  or esc to exit screen", gp.size/2+175, gp.size*5-30);
         getCenterForX(g2, "  or esc to exit screen", gp);
 
-        playIntroMusic(gp, "abc");
-
+        if(gp.sound.isMuted()) {
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 14F));
+            g2.drawString("mute", gp.size * 9 + 25, 15);
+        }
     }
 
     @Override
     public void update(GamePanel gp) {
 
         if(initiation){
-            
             initiation = false;
+            gp.sound.playMusic();
         }
 
     }
@@ -83,10 +85,4 @@ public class HomeState implements GameState {
         }
         return img;
     }
-    private void playIntroMusic(GamePanel gp, String filepath){
-        if (!gp.getMusicPlaying()){
-            gp.sound.playMusic();
-        }
-    }
-
 }

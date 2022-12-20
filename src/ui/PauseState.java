@@ -12,12 +12,20 @@ public class PauseState implements GameState{
         g2.setFont(g2.getFont().deriveFont(Font.BOLD, 32F));
         g2.drawString("GAME IS PAUSED", getCenterForX(g2,"GAME IS PAUSED", gp), gp.height / 2);
 
-        gp.sound.playMusic();
+
+        // TODO slightly broken
+        if(gp.sound.isMuted()) {
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 14F));
+            g2.drawString("mute", gp.size * 9 + 25, 15);
+        }
 
     }
 
     @Override
     public void update(GamePanel gp) {
+        if (!gp.sound.getMusicPlaying()){
+            gp.sound.playMusic();
+        }
     }
 
     @Override

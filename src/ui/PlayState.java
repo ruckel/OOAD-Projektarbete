@@ -11,6 +11,7 @@ import java.awt.image.BufferedImage;
 public class PlayState implements GameState {
 
     private final BufferedImage background = new Utility().loadImage("background", 640, 640);
+    private boolean initiation = true;
 
     @Override
     public void draw(Graphics2D g2, GamePanel gp) {
@@ -32,8 +33,10 @@ public class PlayState implements GameState {
         g2.setColor(Color.white);
         g2.drawString("Score: " + gp.player.getScore(), gp.size / 2, gp.size / 2);
 
-
-        gp.sound.playMusic();
+        if(gp.sound.isMuted()) {
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 14F));
+            g2.drawString("mute", gp.size * 9 + 25, 15);
+        }
 
     }
 
@@ -50,7 +53,13 @@ public class PlayState implements GameState {
                 gp.obstacles) {
             ob.update(gp);
         }
+        if (initiation || !gp.sound.getMusicPlaying()){
+            initiation = false;
+            gp.sound.playMusic();
+        }
     }
+
+
 
     @Override
     public GameState setNext() {
@@ -60,5 +69,9 @@ public class PlayState implements GameState {
     @Override
     public GameState setLast() {
         return new PauseState();
+    }
+
+    public void setInitiation(boolean initiation) {
+        this.initiation = initiation;
     }
 }
