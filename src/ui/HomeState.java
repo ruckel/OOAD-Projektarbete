@@ -54,6 +54,8 @@ public class HomeState implements GameState {
             initiation = false;
             gp.player.reset();
             gp.unitLoader.resetUnits();
+        }
+        if (!gp.sound.getMusicPlaying()){
             gp.sound.playMusic();
         }
 

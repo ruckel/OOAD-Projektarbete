@@ -116,8 +116,6 @@ public class Sound {
             gp.sound.musicClip.start();
             gp.sound.setMusicPlaying(true);
         }
-
-
     }
 
     public boolean isMuted() {
