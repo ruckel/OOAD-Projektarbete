@@ -11,7 +11,10 @@ public class Player extends Unit{
 
     private final InputHandler inputHandler;
 
-    private int score = 0;
+    public int score = 0;
+    public int lives = 3;
+    public boolean invincible = false;
+    public int invincibilityCount = 0;
 
     //Shooting
     private int laserCount = 0;
@@ -21,6 +24,7 @@ public class Player extends Unit{
     public Player(InputHandler inputHandler, int size, int positionY){
         this.inputHandler = inputHandler;
         image = new Utility().loadImage("player", size, size);
+        hurt = new Utility().loadImage("playerhurt", size, size);
 
         this.positionY = positionY;
         positionX = size * 5;
@@ -43,6 +47,12 @@ public class Player extends Unit{
     }
 
     public void update(GamePanel gp) {
+        if (invincible && invincibilityCount == 60*4){
+            invincible = false;
+            invincibilityCount = 0;
+        }else if (invincible && invincibilityCount <= 60*4 ) {
+            invincibilityCount++;
+        }
         if(shoot){
             laserCoolDown++;
             if(laserCoolDown == 20){
@@ -75,13 +85,42 @@ public class Player extends Unit{
     }
 
     public void draw(Graphics2D g2){
+
+        if(invincible){
+            g2.drawImage(hurt, positionX, positionY, null);
+        }
+
+        if(invincible){
+            if (invincibilityCount < 30){
+                g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f));
+            } else if (invincibilityCount < 60){
+                g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.7f));
+            } else if (invincibilityCount < 90){
+                g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f));
+            } else if (invincibilityCount < 120){
+                g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.7f));
+            } else if (invincibilityCount < 150){
+                g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f));
+            } else if (invincibilityCount < 180){
+                g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.7f));
+            } else if (invincibilityCount < 210){
+                g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f));
+            } else if (invincibilityCount < 240){
+                g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.7f));
+            }
+        }
+
         g2.drawImage(image, positionX, positionY, null);
+        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
     }
     public void incrementScore(){
         score++;
     }
-    public void resetScore(){
+    public void reset(){
         score = 0;
+        lives = 3;
+        invincible = false;
+        invincibilityCount = 0;
     }
     public int getScore(){
         return score;

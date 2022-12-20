@@ -50,8 +50,9 @@ public class HomeState implements GameState {
     public void update(GamePanel gp) {
 
         if(initiation){
-            
             initiation = false;
+            gp.player.reset();
+            gp.unitLoader.resetUnits(gp);
             gp.player.resetScore();
             gp.unitLoader.resetUnits();
         }

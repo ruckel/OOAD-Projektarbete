@@ -2,11 +2,12 @@ package main;
 
 import Sound.SoundTracks;
 import ui.EndState;
+import ui.PlayState;
 import unit.Unit;
 
 public class CollisionHandler {
 
-    private final GamePanel gp;
+    GamePanel gp;
 
     public CollisionHandler(GamePanel gp){
         this.gp = gp;
@@ -28,6 +29,14 @@ public class CollisionHandler {
             unit.alive = false;
             gp.sound.playSoundEffect(SoundTracks.COLLISION);
             gp.setState(new EndState());
+
+            if(!gp.player.invincible) {
+                gp.player.lives--;
+                gp.player.invincible = true;
+            }
+            if(gp.player.lives == 0){
+                gp.setState(new EndState());
+            }
             return true;
         }
         return false;
