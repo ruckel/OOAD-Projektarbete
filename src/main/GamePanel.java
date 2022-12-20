@@ -1,5 +1,6 @@
 package main;
 
+import Sound.Sound;
 import ui.GameState;
 import ui.HomeState;
 import ui.State;
@@ -29,6 +30,7 @@ public class GamePanel extends JPanel implements Runnable {
     public Player player = new Player(inputHandler, size, height - (size + size / 10));
     public UnitLoader unitLoader = new UnitLoader(this);
     public CollisionHandler ch = new CollisionHandler(this);
+    public Sound sound = new Sound(this);
 
     public GamePanel() {
 
@@ -80,7 +82,7 @@ public class GamePanel extends JPanel implements Runnable {
         }
     }
 
-    public void update() {
+    private void update() {
         state.update(this);
     }
 
@@ -97,10 +99,15 @@ public class GamePanel extends JPanel implements Runnable {
     public GameState setState(){
         return state.getCurrentGameState();
     }
+    public GameState getState(){
+        return state.getCurrentGameState();
+    }
     public void setNextState(){
         state.setNextState();
     }
     public void setLastState(){
         state.setLastState();
     }
+
+
 }

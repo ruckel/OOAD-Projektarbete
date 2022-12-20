@@ -1,5 +1,7 @@
 package main;
 
+import Sound.Sound;
+
 import javax.swing.*;
 
 public class Main {

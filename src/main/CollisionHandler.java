@@ -6,7 +6,7 @@ import unit.Unit;
 
 public class CollisionHandler {
 
-    GamePanel gp;
+    private final GamePanel gp;
 
     public CollisionHandler(GamePanel gp){
         this.gp = gp;

@@ -1,5 +1,6 @@
 package ui;
 
+import Sound.SoundTracks;
 import main.GamePanel;
 import main.Utility;
 import unit.Laser;
@@ -9,7 +10,7 @@ import java.awt.image.BufferedImage;
 
 public class PlayState implements GameState {
 
-
+    private final BufferedImage background = new Utility().loadImage("background", 640, 640);
 
     @Override
     public void draw(Graphics2D g2, GamePanel gp) {
@@ -18,7 +19,6 @@ public class PlayState implements GameState {
         g2.drawImage(background, 0, 0,null);
 
         gp.player.draw(g2);
-
         for (Laser laser :
                 gp.lasers) {
             laser.draw(g2);
@@ -45,6 +45,12 @@ public class PlayState implements GameState {
             g2.drawImage(heart, gp.width-gp.size-heart.getWidth()*2,gp.size/4, null);
         }
 
+
+        if(gp.sound.isMuted()) {
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 14F));
+            g2.drawString("mute", gp.size * 9 + 25, 15);
+        }
+
     }
 
     @Override
@@ -60,7 +66,13 @@ public class PlayState implements GameState {
                 gp.obstacles) {
             ob.update(gp);
         }
+        if (initiation || !gp.sound.getMusicPlaying()){
+            initiation = false;
+            gp.sound.playMusic();
+        }
     }
+
+
 
     @Override
     public GameState setNext() {
@@ -70,5 +82,9 @@ public class PlayState implements GameState {
     @Override
     public GameState setLast() {
         return new PauseState();
+    }
+
+    public void setInitiation(boolean initiation) {
+        this.initiation = initiation;
     }
 }

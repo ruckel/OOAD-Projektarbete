@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class UnitLoader {
 
-    GamePanel gp;
+    private final GamePanel gp;
 
     private int obstacleCount = 0;
     private int loopCount = 0;
@@ -51,7 +51,7 @@ public class UnitLoader {
         Random rng = new Random();
         return rng.nextInt(5, gp.width - gp.size);
     }
-    public void resetUnits(GamePanel gp){
+    public void resetUnits(){
         gp.player.update(gp);
         for (Laser laser :
                 gp.lasers) {
