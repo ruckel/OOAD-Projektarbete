@@ -42,8 +42,8 @@ public class CollisionHandler {
             } else if(gp.player.lives == 1 && !godMode){
                 gp.player.lives--;
                 gp.setState(new EndState());
-                //gp.sound.playSoundEffect(SoundTracks.COLLISION, Integer.parseInt(property.getProperty("deadsound")));
-                gp.sound.playSoundEffect(SoundTracks.COLLISION, rng);
+                gp.sound.playSoundEffect(SoundTracks.COLLISION, Integer.parseInt(property.getProperty("deadsound")));
+                //gp.sound.playSoundEffect(SoundTracks.COLLISION, rng);
 
                 gp.sound.deathMute();
             }
