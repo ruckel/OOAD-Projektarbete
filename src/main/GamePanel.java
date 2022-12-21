@@ -18,7 +18,8 @@ public class GamePanel extends JPanel implements Runnable {
     final private double FPS = 60.0;
     //UNITS
     public Laser[] lasers = new Laser[10];
-    //public Obstacle[] obstacles = new Obstacle[20];
+
+    private ObstacleFactory obstacleFactory = new ObstacleFactory(this);
     public Obstacle[] obstacles = new Obstacle[20];
 
     //OBJEKT
@@ -54,9 +55,9 @@ public class GamePanel extends JPanel implements Runnable {
         }
         for (int i = 0; i < obstacles.length; i++) {
             if (i == obstacles.length-1) {
-                obstacles[i] = new SuperMeteorite(size, -size);
+                obstacles[i] = obstacleFactory.getObstacle(Obstacles.SUPER_METEORITE);
             }else {
-                obstacles[i] = new Meteorite(size, -size);
+                obstacles[i] = obstacleFactory.getObstacle(Obstacles.METEORITE);
             }
         }
 
