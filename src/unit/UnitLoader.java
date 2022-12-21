@@ -20,7 +20,12 @@ public class UnitLoader {
         loopCount++;
         if (loopCount == obstacleInterval){
             loopCount = 0;
-            gp.obstacles[obstacleCount].setObstacle(randomSpawnX(), randomSpeed());
+
+            if (gp.obstacles[obstacleCount].id == 1) {
+                gp.obstacles[obstacleCount].setObstacle(randomSpawnX(), randomSpeed());
+            } else {
+                gp.obstacles[obstacleCount].setObstacle(randomSpawnX(), 2);
+            }
             obstacleCount++;
             if (obstacleCount == 20){
                 obstacleCount = 0;

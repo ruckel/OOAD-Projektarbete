@@ -19,7 +19,7 @@ public class GamePanel extends JPanel implements Runnable {
     //UNITS
     public Laser[] lasers = new Laser[10];
     //public Obstacle[] obstacles = new Obstacle[20];
-    public Obstacle[] obstacles = new Meteorite[20];
+    public Obstacle[] obstacles = new Obstacle[20];
 
     //OBJEKT
     private Thread gameThread;
@@ -53,7 +53,11 @@ public class GamePanel extends JPanel implements Runnable {
             lasers[i] = new Laser(size, height - (size + size/2));
         }
         for (int i = 0; i < obstacles.length; i++) {
-            obstacles[i] = new Meteorite(size, -size);
+            if (i == obstacles.length-1) {
+                obstacles[i] = new SuperMeteorite(size, -size);
+            }else {
+                obstacles[i] = new Meteorite(size, -size);
+            }
         }
 
     }

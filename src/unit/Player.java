@@ -12,7 +12,6 @@ public class Player extends Unit{
     private final InputHandler inputHandler;
 
     public int score = 0;
-    public int lives = 3;
     public boolean invincible = false;
     public int invincibilityCount = 0;
 
@@ -28,6 +27,7 @@ public class Player extends Unit{
 
         this.positionY = positionY;
         positionX = size * 5;
+        lives = 3;
 
         setUpHitBox();
         setUpStats();

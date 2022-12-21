@@ -8,22 +8,15 @@ import java.awt.*;
 public class Obstacle extends Unit{
 
     private final int defaultY;
+    public int id;
 
     public Obstacle(int size, int defaultY){
         image = new Utility().loadImage("obstacle", size, size);
         this.defaultY = defaultY;
 
         positionY = defaultY;
-        setUpHitBox();
     }
-    private void setUpHitBox(){
-        hitBox.x = 10;
-        hitBox.y = 15;
-        hitBox.width = 40;
-        hitBox.height = 40;
-        defaultHitBoxX = hitBox.x;
-        defaultHitBoxY = hitBox.y;
-    }
+    private void setUpHitBox(){}
     public void setObstacle(int screenX, int speed){
         positionX = screenX;
         this.speed = speed;

@@ -4,20 +4,20 @@ import main.Utility;
 
 import java.awt.*;
 
-public class Meteorite extends Obstacle{
-    public Meteorite(int size, int defaultY) {
+public class SuperMeteorite extends Obstacle{
+    public SuperMeteorite(int size, int defaultY) {
         super(size, defaultY);
-        image = new Utility().loadImage("obstacle", size, size);
-        lives = 1;
-        id = 1;
+        image = new Utility().loadImage("super-meteorite", size*2, size*2);
+        lives = 5;
+        id = 2;
         setUpHitBox();
     }
 
     private void setUpHitBox(){
-        hitBox.x = 10;
-        hitBox.y = 15;
-        hitBox.width = 40;
-        hitBox.height = 40;
+        hitBox.x = 20;
+        hitBox.y = 30;
+        hitBox.width = 80;
+        hitBox.height = 80;
         defaultHitBoxX = hitBox.x;
         defaultHitBoxY = hitBox.y;
     }
@@ -27,5 +27,4 @@ public class Meteorite extends Obstacle{
             g2.drawImage(image, positionX, positionY, null);
         }
     }
-
 }

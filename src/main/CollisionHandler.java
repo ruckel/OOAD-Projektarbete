@@ -3,6 +3,8 @@ package main;
 import Sound.SoundTracks;
 import ui.EndState;
 import ui.PlayState;
+import unit.Meteorite;
+import unit.SuperMeteorite;
 import unit.Unit;
 
 public class CollisionHandler {
@@ -21,7 +23,11 @@ public class CollisionHandler {
                     gp.sound.playSoundEffect(SoundTracks.COLLISION);
                     gp.lasers[i].reset();
                     gp.player.incrementScore();
-                    return true;
+                    unit.lives--;
+                    if (unit.lives == 0){
+                        resetObstacleLives();
+                        return true;
+                    }
                 }
             }
         }
@@ -40,5 +46,15 @@ public class CollisionHandler {
             return true;
         }
         return false;
+    }
+
+    public void resetObstacleLives(){
+        for(int i = 0; i < gp.obstacles.length; i++){
+            if (gp.obstacles[i].id == 1){
+                gp.obstacles[i].lives = 1;
+            } else {
+                gp.obstacles[i].lives = 5;
+            }
+        }
     }
 }

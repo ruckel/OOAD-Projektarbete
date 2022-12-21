@@ -11,6 +11,7 @@ public class Unit {
     public int positionX, positionY;
     protected int defaultHitBoxX, defaultHitBoxY;
     protected int speed;
+    public int lives;
     public boolean alive = false;
 
     void update(){}
