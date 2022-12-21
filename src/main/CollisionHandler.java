@@ -2,9 +2,6 @@ package main;
 
 import Sound.SoundTracks;
 import ui.EndState;
-import ui.PlayState;
-import unit.Meteorite;
-import unit.SuperMeteorite;
 import unit.Unit;
 
 public class CollisionHandler {

@@ -4,7 +4,7 @@ import main.GamePanel;
 
 public class ObstacleFactory {
 
-    private GamePanel gp;
+    private final GamePanel gp;
 
     public ObstacleFactory(GamePanel gp){
         this.gp = gp;
