@@ -41,5 +41,6 @@ public class Obstacle extends Unit{
         alive = false;
         positionY = defaultY;
     }
+    public void setUpHitBox(){}
     public void draw(Graphics2D g2) {}
 }

@@ -8,16 +8,16 @@ public class Meteorite extends Obstacle{
     public Meteorite(int size, int defaultY) {
         super(size, defaultY);
         image = new Utility().loadImage("obstacle", size, size);
-        setupMeteorite();
+        setUpMeteorite();
         setUpHitBox();
     }
 
-    private void setupMeteorite(){
+    private void setUpMeteorite(){
         lives = 1;
         id = 1;
     }
 
-    private void setUpHitBox(){
+    public void setUpHitBox(){
         hitBox.x = 10;
         hitBox.y = 15;
         hitBox.width = 40;
