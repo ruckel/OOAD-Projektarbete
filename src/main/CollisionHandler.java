@@ -5,6 +5,8 @@ import ui.EndState;
 import ui.PlayState;
 import unit.Unit;
 
+import java.util.Random;
+
 public class CollisionHandler {
 
     GamePanel gp;
@@ -29,6 +31,8 @@ public class CollisionHandler {
         }
         if (gp.player.hitBox.intersects(unit.hitBox)){
             unit.alive = false;
+            Random rngGen = new Random();
+            int rng = rngGen.nextInt(4,8);
             if (gp.player.invincible || godMode) {
                 gp.sound.playSoundEffect(SoundTracks.COLLISION, Integer.parseInt(property.getProperty("shieldsound")));
             } else if(!gp.player.invincible && !godMode && gp.player.lives > 1) {
@@ -38,7 +42,9 @@ public class CollisionHandler {
             } else if(gp.player.lives == 1 && !godMode){
                 gp.player.lives--;
                 gp.setState(new EndState());
-                gp.sound.playSoundEffect(SoundTracks.COLLISION, Integer.parseInt(property.getProperty("deadsound")));
+                //gp.sound.playSoundEffect(SoundTracks.COLLISION, Integer.parseInt(property.getProperty("deadsound")));
+                gp.sound.playSoundEffect(SoundTracks.COLLISION, rng);
+
                 gp.sound.deathMute();
             }
             return true;

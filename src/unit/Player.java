@@ -72,7 +72,7 @@ public class Player extends Unit{
                 laserCoolDown = 0;
             }
         } else if(inputHandler.shoot){
-            if(gp.player.score > 0 || superGunCheat) {
+            if(gp.player.score > -1 || superGunCheat) {
                 shoot = true;
                     gp.player.decreaseScore(5);
 
@@ -137,7 +137,7 @@ public class Player extends Unit{
             }
         }
 
-        g2.drawImage(image, positionX, positionY--, null);
+        g2.drawImage(image, positionX, positionY, null);
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
     }
     public void incrementScore(boolean laserHit){
