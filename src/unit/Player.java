@@ -27,7 +27,6 @@ public class Player extends Unit{
 
         this.positionY = positionY;
         positionX = size * 5;
-        lives = 3;
 
         setUpHitBox();
         setUpStats();
@@ -35,6 +34,7 @@ public class Player extends Unit{
     private void setUpStats(){
         //antal pixlar
         speed = 5;
+        lives = 3;
         alive = true;
     }
     private void setUpHitBox(){

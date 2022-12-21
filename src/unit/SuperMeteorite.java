@@ -8,9 +8,13 @@ public class SuperMeteorite extends Obstacle{
     public SuperMeteorite(int size, int defaultY) {
         super(size, defaultY);
         image = new Utility().loadImage("super-meteorite", size*2, size*2);
+        setupSuperMeteorite();
+        setUpHitBox();
+    }
+
+    private void setupSuperMeteorite(){
         lives = 5;
         id = 2;
-        setUpHitBox();
     }
 
     private void setUpHitBox(){
