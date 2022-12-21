@@ -16,7 +16,6 @@ public class Obstacle extends Unit{
 
         positionY = defaultY;
     }
-    private void setUpHitBox(){}
     public void setObstacle(int screenX, int speed){
         positionX = screenX;
         this.speed = speed;
