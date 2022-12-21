@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="OOAD-Projektarbete:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/OOAD_Projektarbete_jar</output-path>
+    <root id="archive" name="OOAD-Projektarbete.jar">
+      <element id="module-output" name="OOAD-Projektarbete" />
+    </root>
+  </artifact>
+</component>

@@ -31,11 +31,12 @@ public class CollisionHandler {
             unit.alive = false;
             if (gp.player.invincible || godMode) {
                 gp.sound.playSoundEffect(SoundTracks.COLLISION, Integer.parseInt(property.getProperty("shieldsound")));
-            } else if(!gp.player.invincible && !godMode) {
+            } else if(!gp.player.invincible && !godMode && gp.player.lives > 1) {
                 gp.player.lives--;
                 gp.player.invincible = true;
                 gp.sound.playSoundEffect(SoundTracks.COLLISION, Integer.parseInt(property.getProperty("collisionsound")));
-            } else if(gp.player.lives == 0 && !godMode){
+            } else if(gp.player.lives == 1 && !godMode){
+                gp.player.lives--;
                 gp.setState(new EndState());
                 gp.sound.playSoundEffect(SoundTracks.COLLISION, Integer.parseInt(property.getProperty("deadsound")));
                 gp.sound.deathMute();

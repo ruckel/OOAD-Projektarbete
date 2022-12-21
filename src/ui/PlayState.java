@@ -5,23 +5,37 @@ import main.Property;
 import main.Utility;
 import unit.Laser;
 import unit.Obstacle;
+import unit.Star;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class PlayState implements GameState {
 
     private boolean initiation = true;
+    private int backgroundSpeed = 0;
     Property property = Property.getInstance();
     @Override
     public void draw(Graphics2D g2, GamePanel gp) {
-        final BufferedImage background = new Utility().loadImage("background", gp.width, gp.height);
+        final BufferedImage background = new Utility().loadImage("background2", gp.width, gp.height);
+        final BufferedImage background2 = new Utility().loadImage("background", gp.width, gp.height);
         final BufferedImage heart = new Utility().loadImage("heart", gp.size/3,gp.size/3);
         g2.drawImage(background, 0, 0,null);
+
+        if (initiation){
+            g2.drawImage(background2, 0, 0,null);
+        } else if (!initiation && backgroundSpeed < gp.height) {
+            g2.drawImage(background2, 0, backgroundSpeed, null);
+            backgroundSpeed = backgroundSpeed + 5;
+        }
 
         gp.player.draw(g2);
         for (Laser laser :
                 gp.lasers) {
             laser.draw(g2);
+        }
+        for (Star star : gp.stars){
+            star.draw(g2);
         }
 
         for (Obstacle ob :
@@ -62,10 +76,14 @@ public class PlayState implements GameState {
         }
 
         gp.unitLoader.update();
+        for (Star star : gp.stars){
+            star.update(gp);
+        }
         for (Obstacle ob :
                 gp.obstacles) {
             ob.update(gp);
         }
+
         if (initiation){
             initiation = false;
         }

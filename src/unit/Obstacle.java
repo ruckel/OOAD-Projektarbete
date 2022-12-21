@@ -13,6 +13,7 @@ public class Obstacle extends Unit{
 
     public Obstacle(int size, int defaultY){
         image = new Utility().loadImage("obstacle", size, size);
+        heart = new Utility().loadImage("heart", size, size);
         this.defaultY = defaultY;
 
         positionY = defaultY;
@@ -45,8 +46,9 @@ public class Obstacle extends Unit{
 
             if(gp.ch.checkObstacle(this)){
                 alive = false;
-                positionY = defaultY;
             }
+        } else {
+            positionY = defaultY;
         }
     }
     public void reset(){
@@ -56,6 +58,8 @@ public class Obstacle extends Unit{
     public void draw(Graphics2D g2) {
         if (alive) {
             g2.drawImage(image, positionX, positionY, null);
+        } else {
+            g2.drawImage(heart, positionX, positionY, null);
         }
     }
 }

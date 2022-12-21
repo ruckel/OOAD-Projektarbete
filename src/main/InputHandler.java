@@ -54,6 +54,10 @@ public class InputHandler implements KeyListener {
         if (key == KeyEvent.VK_M) {
             gp.sound.mute();
         }
+        if (key == KeyEvent.VK_G && gp.player.score > 75) {
+            gp.player.invincible = true;
+            gp.player.score = gp.player.score -100;
+        }
         if (key == KeyEvent.VK_1){
             property.setProperty("difficulty", "1");
             gp.player.setUpStats();

@@ -72,9 +72,10 @@ public class Player extends Unit{
                 laserCoolDown = 0;
             }
         } else if(inputHandler.shoot){
-            if(gp.player.score >= 0) {
+            if(gp.player.score > 0 || superGunCheat) {
                 shoot = true;
-                gp.player.decreaseScore(5);
+                    gp.player.decreaseScore(5);
+
                 gp.sound.playSoundEffect(SoundTracks.LASER, Integer.parseInt(property.getProperty("lasersound")));
                 gp.lasers[laserCount].setUpLaser(positionX - 1, positionY - 1, 7 * difficultyMultiplier);
                 laserCount++;
@@ -136,7 +137,7 @@ public class Player extends Unit{
             }
         }
 
-        g2.drawImage(image, positionX, positionY, null);
+        g2.drawImage(image, positionX, positionY--, null);
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
     }
     public void incrementScore(boolean laserHit){

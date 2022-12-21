@@ -132,7 +132,7 @@ public class Sound {
     public void deathMute(){
         gp.sound.musicClip.stop();
         try {
-            Thread.sleep(2000);
+            Thread.sleep(0);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
