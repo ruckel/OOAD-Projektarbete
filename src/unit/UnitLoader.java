@@ -9,6 +9,7 @@ public class UnitLoader {
     private final GamePanel gp;
 
     private int obstacleCount = 0;
+    private int starCount = 0;
     private int loopCount = 0;
     private int obstacleInterval = 50;
 
@@ -22,8 +23,19 @@ public class UnitLoader {
             loopCount = 0;
             gp.obstacles[obstacleCount].setObstacle(randomSpawnX(), randomSpeed());
             obstacleCount++;
+
+            for (int i = 0; i<1; i++) {
+                gp.stars[starCount].setStar(randomSpawnX(), 4);
+                starCount++;
+                gp.stars[starCount].setStar(randomSpawnX(), 6);
+                starCount++;
+            }
+
             if (obstacleCount == 20){
                 obstacleCount = 0;
+            }
+            if (starCount == gp.stars.length){
+                starCount = 0;
             }
         }
     }
