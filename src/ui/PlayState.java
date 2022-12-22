@@ -7,7 +7,7 @@ import unit.Laser;
 import unit.Obstacle;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-
+//:)
 public class PlayState implements GameState {
 
     private final BufferedImage background = new Utility().loadImage("background", 640, 640);
