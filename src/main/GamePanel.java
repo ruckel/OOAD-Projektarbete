@@ -3,9 +3,11 @@ package main;
 import Sound.Sound;
 import ui.GameState;
 import ui.HomeState;
-import ui.PlayState;
 import ui.State;
-import unit.*;
+import unit.Laser;
+import unit.Obstacle;
+import unit.Player;
+import unit.UnitLoader;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,7 +22,6 @@ public class GamePanel extends JPanel implements Runnable {
     //UNITS
     public Laser[] lasers = new Laser[10];
     public Obstacle[] obstacles = new Obstacle[20];
-    public Star[] stars = new Star[1000];
 
     //OBJEKT
     private Thread gameThread;
@@ -49,15 +50,12 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     private void setupGame() {
-        state.setCurrentGameState(new PlayState());
+        state.setCurrentGameState(new HomeState());
         for (int i = 0; i < lasers.length; i++) {
             lasers[i] = new Laser(size, height - (size + size/2));
         }
         for (int i = 0; i < obstacles.length; i++) {
             obstacles[i] = new Obstacle(size, -size);
-        }
-        for (int i = 0; i < stars.length; i++) {
-            stars[i] = new Star(-size);
         }
 
     }

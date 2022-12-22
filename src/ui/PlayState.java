@@ -5,14 +5,12 @@ import main.GamePanel;
 import main.Utility;
 import unit.Laser;
 import unit.Obstacle;
-import unit.Star;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class PlayState implements GameState {
 
-    private final BufferedImage background = new Utility().loadImage("background2", 640, 640);
+    private final BufferedImage background = new Utility().loadImage("background", 640, 640);
     private boolean initiation = true;
 
     @Override
@@ -20,10 +18,6 @@ public class PlayState implements GameState {
         g2.drawImage(background, 0, 0,null);
 
 
-        for (Star stars :
-                gp.stars) {
-            stars.draw(g2);
-        }
         gp.player.draw(g2);
         for (Laser laser :
                 gp.lasers) {
@@ -55,9 +49,6 @@ public class PlayState implements GameState {
         }
 
         gp.unitLoader.update();
-        for (Star star : gp.stars){
-            star.update(gp);
-        }
         for (Obstacle ob :
                 gp.obstacles) {
             ob.update(gp);

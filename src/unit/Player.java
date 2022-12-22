@@ -12,7 +12,6 @@ public class Player extends Unit{
     private final InputHandler inputHandler;
 
     private int score = 0;
-    private int lives = 1;
 
     //Shooting
     private int laserCount = 0;
@@ -87,7 +86,5 @@ public class Player extends Unit{
     public int getScore(){
         return score;
     }
-    public int getLives(){return lives;}
-    public void setLives(int liveInput){lives = liveInput;}
 
 }
